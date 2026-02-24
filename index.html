@@ -6,109 +6,211 @@
 <title>فجر | البداية المنظمة لكل باحث</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0f0e0d;--paper:#f5f0e8;--cream:#ede8de;--gold:#c9a84c;--gold-light:#e8cf8a;--teal:#1a6b6b;--teal-light:#2a9d8f;--muted:#7a7268;--border:#d4cebf;--white:#fdfcfa;--shadow:rgba(15,14,13,0.12)}
+:root{--ink:#0f0e0d;--paper:#f5f0e8;--cream:#ede8de;--gold:#c9a84c;--gold-light:#e8cf8a;--teal:#1a6b6b;--teal-light:#2a9d8f;--muted:#7a7268;--border:#d4cebf;--white:#fdfcfa;--shadow:rgba(15,14,13,0.12);--red:#c0392b;--green:#27ae60}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Tajawal',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;direction:rtl}
 body.en{direction:ltr}
-header{background:var(--ink);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--gold)}
+
+/* HEADER */
+header{background:var(--ink);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:200;border-bottom:3px solid var(--gold)}
 .logo{display:flex;align-items:center;gap:.75rem}
 .logo-icon{width:36px;height:36px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
 .logo-text{font-size:1.2rem;font-weight:800;color:var(--white)}
-.logo-sub{font-size:.65rem;color:var(--gold-light);font-family:'IBM Plex Mono',monospace}
-.header-controls{display:flex;align-items:center;gap:.75rem}
-.btn-lang{background:transparent;border:1.5px solid var(--muted);color:var(--white);padding:.35rem 1rem;border-radius:4px;font-size:.8rem;cursor:pointer;transition:all .2s;font-family:'Tajawal',sans-serif}
+.logo-sub{font-size:.6rem;color:var(--gold-light);font-family:'IBM Plex Mono',monospace}
+.header-controls{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.btn-lang{background:transparent;border:1.5px solid var(--muted);color:var(--white);padding:.3rem .8rem;border-radius:4px;font-size:.78rem;cursor:pointer;transition:all .2s;font-family:'Tajawal',sans-serif}
 .btn-lang:hover,.btn-lang.active{border-color:var(--gold);color:var(--gold)}
-.style-select{background:transparent;border:1.5px solid var(--muted);color:var(--white);padding:.35rem .75rem;border-radius:4px;font-size:.8rem;cursor:pointer;outline:none;font-family:'Tajawal',monospace}
+.style-select{background:transparent;border:1.5px solid var(--muted);color:var(--white);padding:.3rem .6rem;border-radius:4px;font-size:.78rem;cursor:pointer;outline:none;font-family:'Tajawal',monospace}
 .style-select option{background:#1a1916;color:var(--white)}
-.app-wrap{display:grid;grid-template-columns:270px 1fr 330px;min-height:calc(100vh - 64px)}
-.sidebar{background:var(--ink);padding:1.75rem 1.25rem;display:flex;flex-direction:column;gap:.5rem}
-.sidebar-label{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-family:'IBM Plex Mono',monospace;margin-bottom:.5rem;padding-right:.5rem}
-body.en .sidebar-label{padding-right:0;padding-left:.5rem}
-.template-btn{background:transparent;border:1px solid #2a2925;color:#9a9082;padding:.85rem 1rem;border-radius:8px;text-align:right;cursor:pointer;transition:all .22s;font-family:'Tajawal',sans-serif;font-size:.88rem;line-height:1.5;position:relative;width:100%}
+.btn-header{background:transparent;border:1.5px solid var(--muted);color:var(--white);padding:.3rem .8rem;border-radius:4px;font-size:.78rem;cursor:pointer;transition:all .2s;font-family:'Tajawal',sans-serif;display:flex;align-items:center;gap:.3rem}
+.btn-header:hover{border-color:var(--gold-light);color:var(--gold-light)}
+.btn-header.save-pulse{border-color:var(--teal-light);color:var(--teal-light)}
+
+/* LAYOUT */
+.app-wrap{display:grid;grid-template-columns:260px 1fr 320px;min-height:calc(100vh - 64px)}
+
+/* SIDEBAR */
+.sidebar{background:var(--ink);padding:1.5rem 1rem;display:flex;flex-direction:column;gap:.4rem;overflow-y:auto}
+.sidebar-label{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-family:'IBM Plex Mono',monospace;margin-bottom:.4rem;padding-right:.4rem}
+body.en .sidebar-label{padding-right:0;padding-left:.4rem}
+.template-btn{background:transparent;border:1px solid #2a2925;color:#9a9082;padding:.8rem .9rem;border-radius:8px;text-align:right;cursor:pointer;transition:all .2s;font-family:'Tajawal',sans-serif;font-size:.85rem;line-height:1.4;position:relative;width:100%}
 body.en .template-btn{text-align:left}
-.template-btn .t-icon{font-size:1rem;display:block;margin-bottom:.2rem}
-.template-btn .t-name{display:block;font-weight:700;color:#ccc5b9;font-size:.9rem}
-.template-btn .t-desc{display:block;font-size:.7rem;color:var(--muted);margin-top:.1rem}
+.template-btn .t-icon{font-size:.95rem;display:block;margin-bottom:.15rem}
+.template-btn .t-name{display:block;font-weight:700;color:#ccc5b9;font-size:.88rem}
+.template-btn .t-desc{display:block;font-size:.68rem;color:var(--muted);margin-top:.1rem}
 .template-btn:hover{border-color:var(--gold);background:rgba(201,168,76,.07)}
 .template-btn.active{border-color:var(--gold);background:rgba(201,168,76,.12)}
 .template-btn.active .t-name{color:var(--gold)}
 .template-btn.active::before{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:3px;height:60%;background:var(--gold);border-radius:3px 0 0 3px}
 body.en .template-btn.active::before{right:auto;left:0;border-radius:0 3px 3px 0}
-.sidebar-divider{border:none;border-top:1px solid #2a2925;margin:1rem 0}
-.progress-wrap{padding:.5rem}
-.progress-label{display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-bottom:.5rem;font-family:'IBM Plex Mono',monospace}
+.sidebar-divider{border:none;border-top:1px solid #2a2925;margin:.75rem 0}
+.sidebar-section-label{font-size:.58rem;color:#4a4540;text-transform:uppercase;letter-spacing:.1em;font-family:'IBM Plex Mono',monospace;margin-bottom:.35rem;padding-right:.4rem}
+
+/* PROGRESS */
+.progress-wrap{padding:.4rem}
+.progress-label{display:flex;justify-content:space-between;font-size:.68rem;color:var(--muted);margin-bottom:.4rem;font-family:'IBM Plex Mono',monospace}
 .progress-bar{height:4px;background:#2a2925;border-radius:2px;overflow:hidden}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--teal-light),var(--gold));border-radius:2px;transition:width .5s ease;width:0%}
-.form-area{padding:2.5rem 2rem;overflow-y:auto;background:var(--paper)}
-.form-header{margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
-.form-title-en{font-size:.68rem;color:var(--gold);font-family:'IBM Plex Mono',monospace;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.35rem}
-.form-title{font-size:1.7rem;font-weight:800;color:var(--ink);line-height:1.2}
-.form-subtitle{color:var(--muted);font-size:.88rem;margin-top:.5rem;font-weight:300}
-.field-section{background:var(--white);border:1px solid var(--border);border-radius:12px;margin-bottom:1.25rem;overflow:hidden;box-shadow:0 2px 8px var(--shadow);transition:box-shadow .2s}
+
+/* SAVED DRAFTS */
+.drafts-list{display:flex;flex-direction:column;gap:.35rem;margin-top:.25rem}
+.draft-item{background:#1a1916;border:1px solid #2a2925;border-radius:6px;padding:.6rem .75rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:space-between}
+.draft-item:hover{border-color:var(--gold)}
+.draft-name{font-size:.75rem;color:#ccc5b9;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
+.draft-date{font-size:.6rem;color:var(--muted);font-family:'IBM Plex Mono',monospace}
+.draft-del{background:transparent;border:none;color:#4a4540;cursor:pointer;font-size:.75rem;padding:.1rem .3rem;border-radius:3px;transition:color .2s}
+.draft-del:hover{color:var(--red)}
+.no-drafts{font-size:.72rem;color:#3a3830;text-align:center;padding:.75rem;font-style:italic}
+
+/* QUALITY BADGE */
+.quality-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .8rem;border-radius:20px;font-size:.72rem;font-weight:700;margin-top:.5rem}
+.quality-badge.low{background:rgba(192,57,43,.15);color:#e74c3c;border:1px solid rgba(192,57,43,.3)}
+.quality-badge.mid{background:rgba(230,126,34,.15);color:#e67e22;border:1px solid rgba(230,126,34,.3)}
+.quality-badge.high{background:rgba(39,174,96,.15);color:#27ae60;border:1px solid rgba(39,174,96,.3)}
+
+/* FORM */
+.form-area{padding:2rem 1.75rem;overflow-y:auto;background:var(--paper)}
+.form-header{margin-bottom:1.75rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border)}
+.form-title-en{font-size:.65rem;color:var(--gold);font-family:'IBM Plex Mono',monospace;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem}
+.form-title{font-size:1.6rem;font-weight:800;color:var(--ink);line-height:1.2}
+.form-subtitle{color:var(--muted);font-size:.85rem;margin-top:.4rem;font-weight:300}
+
+/* FIELD */
+.field-section{background:var(--white);border:1px solid var(--border);border-radius:12px;margin-bottom:1.1rem;overflow:hidden;box-shadow:0 2px 8px var(--shadow);transition:box-shadow .2s}
 .field-section:focus-within{box-shadow:0 4px 20px rgba(201,168,76,.15);border-color:var(--gold-light)}
-.field-header{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.25rem;background:var(--cream);border-bottom:1px solid var(--border);gap:1rem}
-.field-label-wrap{display:flex;flex-direction:column;gap:.15rem}
-.field-label{font-size:.95rem;font-weight:700;color:var(--ink)}
-.field-label-en{font-size:.68rem;color:var(--muted);font-family:'IBM Plex Mono',monospace}
-.field-hint-btn{background:transparent;border:1px solid var(--border);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.75rem;color:var(--muted);transition:all .2s;flex-shrink:0}
+.field-header{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.1rem;background:var(--cream);border-bottom:1px solid var(--border);gap:.75rem}
+.field-label-wrap{display:flex;flex-direction:column;gap:.1rem;flex:1}
+.field-label{font-size:.92rem;font-weight:700;color:var(--ink)}
+.field-label-en{font-size:.65rem;color:var(--muted);font-family:'IBM Plex Mono',monospace}
+.field-header-actions{display:flex;align-items:center;gap:.4rem}
+.field-hint-btn{background:transparent;border:1px solid var(--border);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.7rem;color:var(--muted);transition:all .2s;flex-shrink:0}
 .field-hint-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--white)}
-.field-body{padding:1.25rem}
-.field-hint-box{background:linear-gradient(135deg,#fffdf5,#fdf9ee);border:1px solid var(--gold-light);border-radius:8px;padding:.85rem 1rem;margin-bottom:1rem;font-size:.8rem;color:#7a6830;line-height:1.7;display:none}
+.word-counter{font-size:.62rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;white-space:nowrap}
+.word-counter.warn{color:#e67e22}
+.word-counter.good{color:var(--green)}
+.field-body{padding:1.1rem}
+.field-hint-box{background:linear-gradient(135deg,#fffdf5,#fdf9ee);border:1px solid var(--gold-light);border-radius:8px;padding:.8rem .9rem;margin-bottom:.9rem;font-size:.78rem;color:#7a6830;line-height:1.7;display:none}
 .field-hint-box.visible{display:block}
-textarea,input[type=text],.field-select{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:.75rem 1rem;font-family:'Tajawal',sans-serif;font-size:.92rem;color:var(--ink);background:var(--paper);outline:none;resize:vertical;transition:border-color .2s;direction:inherit}
+
+textarea,input[type=text],.field-select{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:.7rem .9rem;font-family:'Tajawal',sans-serif;font-size:.9rem;color:var(--ink);background:var(--paper);outline:none;resize:vertical;transition:border-color .2s;direction:inherit}
 textarea:focus,input[type=text]:focus,.field-select:focus{border-color:var(--teal-light);background:var(--white)}
 textarea::placeholder,input::placeholder{color:#b0a99a}
-.questions-list{display:flex;flex-direction:column;gap:.6rem}
-.question-item{display:flex;align-items:center;gap:.6rem}
-.question-num{width:26px;height:26px;background:var(--ink);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;font-family:'IBM Plex Mono',monospace}
+
+/* QUESTIONS */
+.questions-list{display:flex;flex-direction:column;gap:.55rem}
+.question-item{display:flex;align-items:center;gap:.55rem}
+.question-num{width:24px;height:24px;background:var(--ink);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;flex-shrink:0;font-family:'IBM Plex Mono',monospace}
 .question-item input{margin:0}
-.add-q-btn{background:transparent;border:1.5px dashed var(--border);border-radius:8px;padding:.5rem;width:100%;cursor:pointer;color:var(--muted);font-family:'Tajawal',sans-serif;font-size:.82rem;margin-top:.5rem;transition:all .2s}
+.add-q-btn{background:transparent;border:1.5px dashed var(--border);border-radius:8px;padding:.45rem;width:100%;cursor:pointer;color:var(--muted);font-family:'Tajawal',sans-serif;font-size:.8rem;margin-top:.45rem;transition:all .2s}
 .add-q-btn:hover{border-color:var(--teal-light);color:var(--teal)}
-.export-wrap{margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap}
-.btn-export{display:flex;align-items:center;gap:.5rem;padding:.85rem 1.75rem;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .22s;border:none}
+
+/* CITATION GENERATOR */
+.cite-generator{background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-top:1rem}
+.cite-gen-title{font-size:.78rem;font-weight:700;color:var(--ink);margin-bottom:.75rem;display:flex;align-items:center;gap:.4rem}
+.cite-fields{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.75rem}
+.cite-field input{font-size:.78rem;padding:.45rem .7rem}
+.cite-result{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:.7rem .9rem;font-size:.78rem;color:var(--ink);min-height:40px;line-height:1.7;direction:ltr;text-align:left;font-family:'Georgia',serif}
+.cite-actions{display:flex;gap:.5rem;margin-top:.5rem}
+.btn-sm{padding:.35rem .8rem;border-radius:6px;font-size:.75rem;font-weight:600;cursor:pointer;font-family:'Tajawal',sans-serif;border:none;transition:all .2s}
+.btn-sm.primary{background:var(--ink);color:var(--gold)}
+.btn-sm.secondary{background:transparent;border:1px solid var(--border);color:var(--ink)}
+.btn-sm:hover{opacity:.85}
+
+/* QUALITY CHECKER */
+.quality-panel{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1.1rem}
+.quality-title{font-size:.85rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.4rem}
+.quality-items{display:flex;flex-direction:column;gap:.5rem}
+.quality-item{display:flex;align-items:center;gap:.6rem;font-size:.8rem}
+.quality-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.quality-dot.ok{background:var(--green)}
+.quality-dot.warn{background:#e67e22}
+.quality-dot.bad{background:var(--red)}
+.quality-score{font-size:1.8rem;font-weight:800;text-align:center;margin-bottom:.5rem}
+.quality-score.low{color:var(--red)}
+.quality-score.mid{color:#e67e22}
+.quality-score.high{color:var(--green)}
+
+/* METHODOLOGY HELPER */
+.method-helper{background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-top:.75rem}
+.method-q{font-size:.8rem;font-weight:600;margin-bottom:.5rem;color:var(--ink)}
+.method-options{display:flex;flex-direction:column;gap:.35rem}
+.method-opt{display:flex;align-items:flex-start;gap:.5rem;cursor:pointer;padding:.4rem .5rem;border-radius:6px;transition:background .15s}
+.method-opt:hover{background:rgba(201,168,76,.08)}
+.method-opt input{margin-top:2px;flex-shrink:0}
+.method-opt-label{font-size:.78rem;color:var(--ink)}
+.method-opt-desc{font-size:.68rem;color:var(--muted);margin-top:.1rem}
+.method-result{margin-top:.75rem;padding:.7rem .9rem;background:var(--white);border:1px solid var(--gold-light);border-radius:8px;font-size:.78rem;color:#7a6830;line-height:1.7;display:none}
+.method-result.visible{display:block}
+
+/* EXPORT */
+.export-wrap{margin-top:1.75rem;display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
+.btn-export{display:flex;align-items:center;gap:.5rem;padding:.8rem 1.5rem;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:all .22s;border:none}
 .btn-primary{background:var(--ink);color:var(--gold);box-shadow:0 4px 16px rgba(15,14,13,.3)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(15,14,13,.4)}
+.btn-primary:hover{transform:translateY(-2px)}
 .btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--border)}
 .btn-secondary:hover{border-color:var(--ink)}
-.autosave-indicator{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--teal-light);font-family:'IBM Plex Mono',monospace;margin-top:.75rem}
-.save-dot{width:7px;height:7px;border-radius:50%;background:var(--teal-light);animation:pulse 2s infinite}
+.btn-json{background:rgba(26,107,107,.12);color:var(--teal);border:1.5px solid rgba(26,107,107,.3)}
+.btn-json:hover{background:rgba(26,107,107,.2)}
+.autosave-indicator{display:flex;align-items:center;gap:.35rem;font-size:.7rem;color:var(--teal-light);font-family:'IBM Plex Mono',monospace;margin-top:.6rem}
+.save-dot{width:6px;height:6px;border-radius:50%;background:var(--teal-light);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* PREVIEW */
 .preview-panel{background:var(--white);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
 body.en .preview-panel{border-right:none;border-left:1px solid var(--border)}
-.preview-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);background:var(--cream);display:flex;align-items:center;justify-content:space-between}
-.preview-title{font-size:.7rem;font-family:'IBM Plex Mono',monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-.preview-badge{background:var(--teal);color:var(--white);font-size:.6rem;padding:.2rem .5rem;border-radius:3px;font-family:'IBM Plex Mono',monospace}
-.preview-doc{flex:1;overflow-y:auto;padding:2rem 1.5rem;font-family:'Georgia',serif;font-size:.82rem;line-height:1.9;color:#2a2520}
-.doc-uni-header{text-align:center;border-bottom:2px solid var(--ink);padding-bottom:1rem;margin-bottom:1.5rem}
-.doc-uni-name{font-size:.85rem;font-weight:bold}
-.doc-doc-type{font-size:1rem;font-weight:bold;margin-top:.25rem}
-.doc-style-tag{font-size:.65rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:.25rem}
-.doc-section{margin-bottom:1.25rem}
-.doc-section-title{font-size:.78rem;font-weight:bold;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--border);padding-bottom:.3rem;margin-bottom:.6rem;color:var(--ink)}
-.doc-section-body{font-size:.8rem;color:#4a4540;line-height:1.8;white-space:pre-wrap;word-break:break-word}
-.doc-placeholder{color:#c0bab0;font-style:italic;font-size:.78rem}
+.preview-header{padding:.9rem 1.1rem;border-bottom:1px solid var(--border);background:var(--cream);display:flex;align-items:center;justify-content:space-between}
+.preview-title{font-size:.65rem;font-family:'IBM Plex Mono',monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.preview-badge{background:var(--teal);color:var(--white);font-size:.58rem;padding:.18rem .45rem;border-radius:3px;font-family:'IBM Plex Mono',monospace}
+.preview-doc{flex:1;overflow-y:auto;padding:1.75rem 1.25rem;font-family:'Georgia',serif;font-size:.8rem;line-height:1.9;color:#2a2520}
+.doc-uni-header{text-align:center;border-bottom:2px solid var(--ink);padding-bottom:.9rem;margin-bottom:1.25rem}
+.doc-uni-name{font-size:.82rem;font-weight:bold}
+.doc-doc-type{font-size:.95rem;font-weight:bold;margin-top:.2rem}
+.doc-style-tag{font-size:.62rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:.2rem}
+.doc-section{margin-bottom:1.1rem}
+.doc-section-title{font-size:.75rem;font-weight:bold;text-transform:uppercase;letter-spacing:.07em;border-bottom:1px solid var(--border);padding-bottom:.25rem;margin-bottom:.5rem;color:var(--ink)}
+.doc-section-body{font-size:.78rem;color:#4a4540;line-height:1.8;white-space:pre-wrap;word-break:break-word}
+.doc-placeholder{color:#c0bab0;font-style:italic;font-size:.75rem}
+
+/* WELCOME */
 .welcome-screen{grid-column:2/4;display:flex;align-items:center;justify-content:center;padding:3rem;text-align:center}
-.welcome-inner{max-width:480px}
-.welcome-icon{font-size:4rem;margin-bottom:1.5rem;display:block}
-.welcome-title{font-size:2rem;font-weight:800;color:var(--ink);line-height:1.2;margin-bottom:.75rem}
-.welcome-sub{color:var(--muted);font-size:.95rem;line-height:1.7;margin-bottom:2rem}
-.welcome-arrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--gold);font-weight:600}
-.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--gold);padding:.75rem 1.5rem;border-radius:8px;font-size:.88rem;font-family:'Tajawal',sans-serif;border:1px solid var(--gold);transition:transform .35s ease;z-index:999}
+.welcome-inner{max-width:460px}
+.welcome-icon{font-size:3.5rem;margin-bottom:1.25rem;display:block}
+.welcome-title{font-size:1.8rem;font-weight:800;color:var(--ink);line-height:1.2;margin-bottom:.6rem}
+.welcome-sub{color:var(--muted);font-size:.9rem;line-height:1.7;margin-bottom:1.75rem}
+.welcome-arrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--gold);font-weight:600}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--white);border-radius:16px;padding:2rem;max-width:460px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.3);transform:translateY(20px);transition:transform .25s}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-title{font-size:1.1rem;font-weight:800;margin-bottom:.5rem}
+.modal-sub{font-size:.82rem;color:var(--muted);margin-bottom:1.25rem}
+.modal input{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:.7rem .9rem;font-family:'Tajawal',sans-serif;font-size:.9rem;outline:none;margin-bottom:1rem}
+.modal input:focus{border-color:var(--teal-light)}
+.modal-actions{display:flex;gap:.75rem;justify-content:flex-end}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--gold);padding:.7rem 1.4rem;border-radius:8px;font-size:.85rem;font-family:'Tajawal',sans-serif;border:1px solid var(--gold);transition:transform .35s ease;z-index:999}
 .toast.show{transform:translateX(-50%) translateY(0)}
+
 @media(max-width:1100px){.app-wrap{grid-template-columns:240px 1fr}.preview-panel{display:none}}
 @media(max-width:700px){.app-wrap{grid-template-columns:1fr}.sidebar{display:none}}
 </style>
 </head>
 <body>
+
 <header>
   <div class="logo">
-    <div class="logo-icon">✦</div>
+    <div class="logo-icon">🌅</div>
     <div>
-      <div class="logo-text" id="logoText">فجر</div>
+      <div class="logo-text">فجر</div>
       <div class="logo-sub">فجر: البداية المنظمة لكل باحث.</div>
     </div>
   </div>
   <div class="header-controls">
+    <button class="btn-header" onclick="openSaveModal()">💾 <span id="hSave">حفظ المسودة</span></button>
+    <label class="btn-header" style="cursor:pointer">📂 <span id="hLoad">تحميل مسودة</span><input type="file" accept=".json" id="importFile" style="display:none" onchange="importJSON(event)"></label>
     <select class="style-select" id="styleSelect" onchange="onStyleChange()">
       <option value="APA">APA 7th</option>
       <option value="MLA">MLA 9th</option>
@@ -124,39 +226,34 @@ body.en .preview-panel{border-right:none;border-left:1px solid var(--border)}
   <aside class="sidebar">
     <div class="sidebar-label" id="sideLabel">اختر نوع القالب</div>
     <button class="template-btn" onclick="selectTemplate('proposal')" id="tpl-proposal">
-      <span class="t-icon">📋</span>
-      <span class="t-name" id="t1n">المقترح البحثي</span>
-      <span class="t-desc" id="t1d">Research Proposal</span>
+      <span class="t-icon">📋</span><span class="t-name" id="t1n">المقترح البحثي</span><span class="t-desc" id="t1d">Research Proposal</span>
     </button>
     <button class="template-btn" onclick="selectTemplate('literature')" id="tpl-literature">
-      <span class="t-icon">📚</span>
-      <span class="t-name" id="t2n">مراجعة الأدبيات</span>
-      <span class="t-desc" id="t2d">Literature Review</span>
+      <span class="t-icon">📚</span><span class="t-name" id="t2n">مراجعة الأدبيات</span><span class="t-desc" id="t2d">Literature Review</span>
     </button>
     <button class="template-btn" onclick="selectTemplate('thesis')" id="tpl-thesis">
-      <span class="t-icon">🎓</span>
-      <span class="t-name" id="t3n">الأطروحة الأكاديمية</span>
-      <span class="t-desc" id="t3d">Thesis / Dissertation</span>
+      <span class="t-icon">🎓</span><span class="t-name" id="t3n">الأطروحة الأكاديمية</span><span class="t-desc" id="t3d">Thesis / Dissertation</span>
     </button>
     <button class="template-btn" onclick="selectTemplate('paper')" id="tpl-paper">
-      <span class="t-icon">📄</span>
-      <span class="t-name" id="t4n">الورقة البحثية</span>
-      <span class="t-desc" id="t4d">Research Paper</span>
+      <span class="t-icon">📄</span><span class="t-name" id="t4n">الورقة البحثية</span><span class="t-desc" id="t4d">Research Paper</span>
     </button>
+
     <hr class="sidebar-divider">
     <div class="progress-wrap">
-      <div class="progress-label">
-        <span id="progressLabel">اكتمال النموذج</span>
-        <span id="progressPct">0%</span>
-      </div>
+      <div class="progress-label"><span id="progressLabel">اكتمال النموذج</span><span id="progressPct">0%</span></div>
       <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
     </div>
+    <div id="qualityWrap" style="padding:.4rem;display:none"></div>
+
+    <hr class="sidebar-divider">
+    <div class="sidebar-section-label" id="draftsLabel">المسودات المحفوظة</div>
+    <div class="drafts-list" id="draftsList"></div>
   </aside>
 
   <div id="mainContent">
     <div class="welcome-screen" id="welcomeScreen">
       <div class="welcome-inner">
-        <span class="welcome-icon">✦</span>
+        <span class="welcome-icon">🌅</span>
         <h1 class="welcome-title" id="welcomeTitle">ابدأ رحلتك البحثية</h1>
         <p class="welcome-sub" id="welcomeSub">اختر نوع القالب المناسب من القائمة لتبدأ في كتابة بحثك بطريقة منظمة واحترافية.</p>
         <div class="welcome-arrow" id="welcomeArrow">← اختر القالب من القائمة الجانبية</div>
@@ -170,17 +267,11 @@ body.en .preview-panel{border-right:none;border-left:1px solid var(--border)}
       </div>
       <div id="fieldsContainer"></div>
       <div class="export-wrap">
-        <button class="btn-export btn-primary" onclick="exportDoc()">
-          <span>⬇</span><span id="exportBtn">تصدير Word</span>
-        </button>
-        <button class="btn-export btn-secondary" onclick="exportPDF()">
-          <span>📄</span><span id="exportPdfBtn">تصدير PDF</span>
-        </button>
+        <button class="btn-export btn-primary" onclick="exportDoc()">⬇ <span id="exportBtn">تصدير Word</span></button>
+        <button class="btn-export btn-secondary" onclick="exportPDF()">📄 <span id="exportPdfBtn">تصدير PDF</span></button>
+        <button class="btn-export btn-json" onclick="exportJSON()">📦 <span id="exportJsonBtn">حفظ JSON</span></button>
       </div>
-      <div class="autosave-indicator">
-        <div class="save-dot"></div>
-        <span id="autoSaveLabel">حفظ تلقائي مفعّل</span>
-      </div>
+      <div class="autosave-indicator"><div class="save-dot"></div><span id="autoSaveLabel">حفظ تلقائي مفعّل</span></div>
     </div>
   </div>
 
@@ -190,574 +281,600 @@ body.en .preview-panel{border-right:none;border-left:1px solid var(--border)}
       <span class="preview-badge" id="styleTag">APA 7th</span>
     </div>
     <div class="preview-doc" id="previewDoc">
-      <div id="previewEmpty" style="text-align:center;color:#c0bab0;padding:4rem 1rem;font-style:italic;font-size:.82rem">
-        اختر قالباً لترى المعاينة هنا...
-      </div>
+      <div id="previewEmpty" style="text-align:center;color:#c0bab0;padding:4rem 1rem;font-style:italic;font-size:.8rem">اختر قالباً لترى المعاينة هنا...</div>
     </div>
   </aside>
 </div>
 
+<!-- SAVE MODAL -->
+<div class="modal-overlay" id="saveModal">
+  <div class="modal">
+    <div class="modal-title" id="mTitle">💾 حفظ المسودة</div>
+    <div class="modal-sub" id="mSub">أدخل اسماً للمسودة لتتمكن من العودة إليها لاحقاً</div>
+    <input type="text" id="draftNameInput" placeholder="مثال: بحث الذكاء الاصطناعي - مسودة 1">
+    <div class="modal-actions">
+      <button class="btn-sm secondary" onclick="closeModal()">إلغاء</button>
+      <button class="btn-sm primary" onclick="saveDraft()">حفظ</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
-<script>
-var lang = 'ar';
-var currentTemplate = null;
-var formData = {};
-
-var T = {
-  ar: {
-    sideLabel: 'اختر نوع القالب',
-    welcomeTitle: 'ابدأ رحلتك البحثية',
-    welcomeSub: 'اختر نوع القالب المناسب من القائمة لتبدأ في كتابة بحثك بطريقة منظمة واحترافية.',
-    welcomeArrow: '← اختر القالب من القائمة الجانبية',
-    previewLabel: 'معاينة مباشرة',
-    progressLabel: 'اكتمال النموذج',
-    autoSaveLabel: 'حفظ تلقائي مفعّل',
-    exportBtn: 'تصدير Word',
-    exportPdfBtn: 'تصدير PDF',
-    addQ: '+ أضف سؤالاً',
-    formSubtitle: 'أكمل الخانات التالية وستظهر معاينة بحثك في الجانب الأيسر',
-    previewEmpty: 'اختر قالباً لترى المعاينة هنا...',
-    toastWord: '✔ تم إنشاء ملف Word بنجاح',
-    toastPdf: '✔ تم إنشاء ملف PDF بنجاح',
-    notEntered: '[ لم يُدخَل بعد ]'
-  },
-  en: {
-    sideLabel: 'Choose Template Type',
-    welcomeTitle: 'Start Your Research Journey',
-    welcomeSub: 'Select a template type from the sidebar to begin writing your research in an organized, professional manner.',
-    welcomeArrow: 'Choose a template from the sidebar →',
-    previewLabel: 'Live Preview',
-    progressLabel: 'Form Completion',
-    autoSaveLabel: 'Auto-save enabled',
-    exportBtn: 'Export Word',
-    exportPdfBtn: 'Export PDF',
-    addQ: '+ Add Question',
-    formSubtitle: 'Complete the fields below and your research preview will appear on the right.',
-    previewEmpty: 'Select a template to see the preview here...',
-    toastWord: '✔ Word file created successfully',
-    toastPdf: '✔ PDF file created successfully',
-    notEntered: '[ Not yet entered ]'
-  }
-};
-
-var TEMPLATES = {
-  proposal: {
-    ar: { title: 'المقترح البحثي', titleEn: 'RESEARCH PROPOSAL TEMPLATE' },
-    en: { title: 'Research Proposal', titleEn: 'RESEARCH PROPOSAL TEMPLATE' },
-    fields: [
-      { id: 'rtitle', type: 'text',
-        ar: { label: 'عنوان البحث', hint: 'صغ عنواناً واضحاً ومحدداً يعكس مشكلة الدراسة ويتضمن المتغيرات الرئيسية. يفضل ألا يتجاوز 15 كلمة.' },
-        en: { label: 'Research Title', hint: 'Write a clear and specific title that reflects the research problem and includes the main variables. Ideally no more than 15 words.' },
-        ph: { ar: 'مثال: أثر استخدام الذكاء الاصطناعي على التحصيل الأكاديمي...', en: 'e.g., The Impact of AI Tools on Academic Achievement...' }
-      },
-      { id: 'problem', type: 'textarea',
-        ar: { label: 'مشكلة الدراسة', hint: 'ابدأ بوصف الظاهرة أو المشكلة، ثم بين الفجوة المعرفية في الأدبيات، واختم بصياغة المشكلة كسؤال محوري.' },
-        en: { label: 'Problem Statement', hint: 'Start by describing the phenomenon or issue, then identify the knowledge gap in existing literature, and conclude by framing the problem as a central question.' },
-        ph: { ar: 'تعد ظاهرة... من أبرز التحديات التي تواجه... وقد لاحظ الباحثون غياباً في...', en: 'The phenomenon of... represents one of the most pressing challenges in...' }
-      },
-      { id: 'questions', type: 'questions',
-        ar: { label: 'أسئلة الدراسة', hint: 'صغ كل سؤال بدءاً بـ ما، كيف، هل. يجب أن تكون الأسئلة قابلة للقياس وترتبط مباشرة بالمشكلة.' },
-        en: { label: 'Research Questions', hint: 'Frame each question starting with What, How, Does, To what extent. Questions must be measurable and directly linked to the problem.' },
-        ph: { ar: 'أدخل سؤالاً بحثياً...', en: 'Enter a research question...' }
-      },
-      { id: 'objectives', type: 'textarea',
-        ar: { label: 'أهداف الدراسة', hint: 'استخدم أفعال إجرائية قابلة للقياس: يحدد، يقيس، يقارن، يحلل، يختبر.' },
-        en: { label: 'Study Objectives', hint: 'Use measurable action verbs: identify, measure, compare, analyze, test.' },
-        ph: { ar: '1. التعرف على...\n2. قياس مستوى...\n3. المقارنة بين...', en: '1. To identify...\n2. To measure...\n3. To compare...' }
-      },
-      { id: 'methodology', type: 'select',
-        ar: { label: 'منهجية الدراسة', hint: 'حدد المنهج والأدوات والعينة. برر اختيار المنهج بناءً على طبيعة مشكلة الدراسة.' },
-        en: { label: 'Methodology', hint: 'Specify the approach, instruments, and sample. Justify your choice based on the research problem.' },
-        options: {
-          ar: ['المنهج الكمي', 'المنهج النوعي', 'المنهج المختلط', 'المنهج التجريبي', 'المنهج الوصفي'],
-          en: ['Quantitative Approach', 'Qualitative Approach', 'Mixed Methods', 'Experimental Design', 'Descriptive Survey']
-        }
-      },
-      { id: 'references', type: 'textarea',
-        ar: { label: 'المراجع والمصادر', hint: 'أدخل مراجعك بتنسيق المعيار المختار. تأكد من ذكر المؤلف، السنة، العنوان، الجهة الناشرة.' },
-        en: { label: 'References', hint: 'Enter your references in the selected citation style. Ensure author, year, title, and publisher are included.' },
-        ph: { ar: 'الحربي، خالد. (2022). عنوان الكتاب. دار النشر.', en: 'Smith, J. (2021). Title of Work. Publisher.' }
-      }
-    ]
-  },
-  literature: {
-    ar: { title: 'مراجعة الأدبيات', titleEn: 'LITERATURE REVIEW TEMPLATE' },
-    en: { title: 'Literature Review', titleEn: 'LITERATURE REVIEW TEMPLATE' },
-    fields: [
-      { id: 'rtitle', type: 'text',
-        ar: { label: 'عنوان المراجعة', hint: 'حدد الموضوع والنطاق الزمني للمراجعة.' },
-        en: { label: 'Review Title', hint: 'Define the topic and time scope of the review.' },
-        ph: { ar: 'مراجعة منهجية لدراسات...', en: 'A Systematic Review of...' }
-      },
-      { id: 'scope', type: 'textarea',
-        ar: { label: 'نطاق المراجعة وهدفها', hint: 'وضح الهدف من المراجعة، والفئة المستهدفة، والنطاق الجغرافي والزمني.' },
-        en: { label: 'Scope and Purpose', hint: 'Clarify the purpose of the review, target population, and geographical and temporal scope.' },
-        ph: { ar: 'تهدف هذه المراجعة إلى تجميع وتحليل الدراسات التي تناولت...', en: 'This review aims to synthesize and analyze studies that examined...' }
-      },
-      { id: 'themes', type: 'textarea',
-        ar: { label: 'المحاور والموضوعات الرئيسية', hint: 'صنف الأدبيات ضمن محاور موضوعية. اذكر الاتفاقات والاختلافات بين الباحثين.' },
-        en: { label: 'Main Themes and Findings', hint: 'Categorize literature into thematic groups. Note agreements and disagreements among researchers.' },
-        ph: { ar: 'المحور الأول: ...\nالمحور الثاني: ...', en: 'Theme 1: ...\nTheme 2: ...' }
-      },
-      { id: 'gaps', type: 'textarea',
-        ar: { label: 'الفجوات البحثية', hint: 'هذا أهم جزء. حدد ما لم تدرسه الأبحاث السابقة وأين تكمن الحاجة إلى مزيد من البحث.' },
-        en: { label: 'Research Gaps', hint: 'This is the most critical section. Identify what prior research has not addressed and where further investigation is needed.' },
-        ph: { ar: 'رغم تعدد الدراسات في هذا المجال، إلا أنها أغفلت...', en: 'Despite extensive research in this field, existing studies have neglected...' }
-      },
-      { id: 'references', type: 'textarea',
-        ar: { label: 'قائمة المراجع', hint: 'رتب المراجع أبجدياً حسب نمط التوثيق المختار.' },
-        en: { label: 'References', hint: 'Arrange references alphabetically according to the selected citation style.' },
-        ph: { ar: 'أدخل المراجع هنا...', en: 'Enter references here...' }
-      }
-    ]
-  },
-  thesis: {
-    ar: { title: 'الأطروحة الأكاديمية', titleEn: 'THESIS / DISSERTATION TEMPLATE' },
-    en: { title: 'Thesis / Dissertation', titleEn: 'THESIS / DISSERTATION TEMPLATE' },
-    fields: [
-      { id: 'rtitle', type: 'text',
-        ar: { label: 'عنوان الأطروحة', hint: 'يجب أن يكون العنوان شاملاً ودقيقاً ويعكس محتوى الأطروحة بالكامل.' },
-        en: { label: 'Thesis Title', hint: 'The title must be comprehensive and precise, fully reflecting the content of the thesis.' },
-        ph: { ar: 'عنوان الأطروحة...', en: 'Thesis title...' }
-      },
-      { id: 'abstract', type: 'textarea',
-        ar: { label: 'الملخص', hint: 'اكتب ملخصاً من 200-350 كلمة يشمل: المشكلة، المنهجية، النتائج، التوصيات. لا تستخدم مراجع في الملخص.' },
-        en: { label: 'Abstract', hint: 'Write a 200-350 word abstract covering: problem, methodology, findings, and recommendations. Do not include references.' },
-        ph: { ar: 'تتناول هذه الدراسة مشكلة... باستخدام منهج... وقد توصلت إلى...', en: 'This study examines the problem of... using a... methodology. The study found that...' }
-      },
-      { id: 'intro', type: 'textarea',
-        ar: { label: 'الفصل الأول: المقدمة', hint: 'ابدأ بعام ثم ضيق نحو الخاص. تضمن: السياق، الأهمية، المشكلة، الأهداف، محددات الدراسة.' },
-        en: { label: 'Chapter 1: Introduction', hint: 'Begin broadly then narrow to the specific. Include: context, significance, problem, objectives, and scope of study.' },
-        ph: { ar: 'يشهد العالم تحولات متسارعة في مجال...', en: 'The world is witnessing rapid transformations in the field of...' }
-      },
-      { id: 'methodology', type: 'textarea',
-        ar: { label: 'منهجية البحث', hint: 'اشرح بالتفصيل: المنهج، مجتمع وعينة الدراسة، أدوات القياس، إجراءات جمع البيانات، والأساليب الإحصائية.' },
-        en: { label: 'Research Methodology', hint: 'Describe in detail: the approach, population and sample, measurement instruments, data collection procedures, and statistical methods.' },
-        ph: { ar: 'اعتمدت الدراسة على المنهج...', en: 'This study adopted a... approach...' }
-      },
-      { id: 'findings', type: 'textarea',
-        ar: { label: 'النتائج والتحليل', hint: 'اعرض النتائج بترتيب منطقي يتوافق مع أسئلة الدراسة.' },
-        en: { label: 'Findings and Analysis', hint: 'Present findings in a logical order aligned with the research questions.' },
-        ph: { ar: 'أظهرت نتائج الدراسة أن...', en: 'The findings of the study revealed that...' }
-      },
-      { id: 'references', type: 'textarea',
-        ar: { label: 'المراجع', hint: 'أدخل جميع المراجع المستخدمة.' },
-        en: { label: 'References', hint: 'Enter all references used in the thesis.' },
-        ph: { ar: 'المراجع العربية والأجنبية...', en: 'References...' }
-      }
-    ]
-  },
-  paper: {
-    ar: { title: 'الورقة البحثية', titleEn: 'RESEARCH PAPER TEMPLATE' },
-    en: { title: 'Research Paper', titleEn: 'RESEARCH PAPER TEMPLATE' },
-    fields: [
-      { id: 'rtitle', type: 'text',
-        ar: { label: 'عنوان الورقة', hint: 'عنوان قصير وجذاب لا يتجاوز 12 كلمة. يجب أن يحمل الكلمات المفتاحية للنشر في المجلات العلمية.' },
-        en: { label: 'Paper Title', hint: 'A concise title not exceeding 12 words. Must contain keywords for journal indexing.' },
-        ph: { ar: 'عنوان الورقة البحثية...', en: 'Paper title...' }
-      },
-      { id: 'abstract', type: 'textarea',
-        ar: { label: 'الملخص', hint: 'ملخص منظم يتضمن: الهدف، المنهج، النتائج، الاستنتاج. 150-250 كلمة.' },
-        en: { label: 'Abstract', hint: 'Structured abstract including: Purpose, Methodology, Findings, Conclusion. 150-250 words.' },
-        ph: { ar: 'الهدف: ...\nالمنهج: ...\nالنتائج: ...\nالاستنتاج: ...', en: 'Purpose: ...\nMethodology: ...\nFindings: ...\nConclusion: ...' }
-      },
-      { id: 'keywords', type: 'text',
-        ar: { label: 'الكلمات المفتاحية', hint: 'اختر 5-7 كلمات مفتاحية تعكس الموضوع الرئيسي مفصولة بفاصلة.' },
-        en: { label: 'Keywords', hint: 'Choose 5-7 keywords reflecting the main topic, separated by commas.' },
-        ph: { ar: 'الكلمة الأولى، الثانية، الثالثة...', en: 'keyword one, keyword two, keyword three...' }
-      },
-      { id: 'intro', type: 'textarea',
-        ar: { label: 'المقدمة', hint: 'ضع سياق الدراسة، مراجعة موجزة للأدبيات، الفجوة البحثية، ثم هدف الورقة.' },
-        en: { label: 'Introduction', hint: 'Provide study context, brief literature overview, research gap, then the aim.' },
-        ph: { ar: 'تعد قضية... من القضايا المحورية في مجال...', en: 'The issue of... represents a central concern in the field of...' }
-      },
-      { id: 'results', type: 'textarea',
-        ar: { label: 'النتائج والمناقشة', hint: 'ناقش النتائج في ضوء الأدبيات السابقة. أشر إلى أوجه الاتفاق والاختلاف مع الدراسات السابقة.' },
-        en: { label: 'Results and Discussion', hint: 'Discuss findings in light of prior literature. Highlight agreements and disagreements with existing studies.' },
-        ph: { ar: 'أسفرت نتائج التحليل عن...', en: 'The analysis yielded...' }
-      },
-      { id: 'conclusion', type: 'textarea',
-        ar: { label: 'الخاتمة والتوصيات', hint: 'لخص أبرز النتائج، اذكر محدودية الدراسة، ثم قدم توصيات للباحثين المستقبليين.' },
-        en: { label: 'Conclusion and Recommendations', hint: 'Summarize key findings, acknowledge limitations, and provide recommendations for future researchers.' },
-        ph: { ar: 'خلصت الدراسة إلى...', en: 'The study concluded that...' }
-      },
-      { id: 'references', type: 'textarea',
-        ar: { label: 'المراجع', hint: 'رتب المراجع وفق النمط المختار.' },
-        en: { label: 'References', hint: 'Arrange references according to the selected style.' },
-        ph: { ar: 'المراجع...', en: 'References...' }
-      }
-    ]
-  }
-};
-
-var TEMPLATE_META = {
-  proposal: { ar: { name: 'المقترح البحثي', desc: 'Research Proposal' }, en: { name: 'Research Proposal', desc: 'خطط الأبحاث' } },
-  literature: { ar: { name: 'مراجعة الأدبيات', desc: 'Literature Review' }, en: { name: 'Literature Review', desc: 'نقد الدراسات' } },
-  thesis:    { ar: { name: 'الأطروحة الأكاديمية', desc: 'Thesis / Dissertation' }, en: { name: 'Thesis / Dissertation', desc: 'أعمال أكاديمية' } },
-  paper:     { ar: { name: 'الورقة البحثية', desc: 'Research Paper' }, en: { name: 'Research Paper', desc: 'للنشر في المجلات' } }
-};
-
-function setLang(l) {
-  lang = l;
-  document.documentElement.lang = l;
-  document.body.classList.toggle('en', l === 'en');
-  document.body.dir = l === 'ar' ? 'rtl' : 'ltr';
-  document.getElementById('btnAr').classList.toggle('active', l === 'ar');
-  document.getElementById('btnEn').classList.toggle('active', l === 'en');
-  var t = T[l];
-  document.getElementById('sideLabel').textContent = t.sideLabel;
-  document.getElementById('welcomeTitle').textContent = t.welcomeTitle;
-  document.getElementById('welcomeSub').textContent = t.welcomeSub;
-  document.getElementById('welcomeArrow').textContent = t.welcomeArrow;
-  document.getElementById('previewLabel').textContent = t.previewLabel;
-  document.getElementById('progressLabel').textContent = t.progressLabel;
-  document.getElementById('autoSaveLabel').textContent = t.autoSaveLabel;
-  document.getElementById('exportBtn').textContent = t.exportBtn;
-  document.getElementById('exportPdfBtn').textContent = t.exportPdfBtn;
-  document.getElementById('previewEmpty').textContent = t.previewEmpty;
-  Object.keys(TEMPLATE_META).forEach(function(k) {
-    var m = TEMPLATE_META[k][l];
-    document.querySelector('#tpl-' + k + ' .t-name').textContent = m.name;
-    document.querySelector('#tpl-' + k + ' .t-desc').textContent = m.desc;
-  });
-  if (currentTemplate) selectTemplate(currentTemplate);
-}
-
-function selectTemplate(id) {
-  currentTemplate = id;
-  if (!formData[id]) formData[id] = {};
-  document.querySelectorAll('.template-btn').forEach(function(b) { b.classList.remove('active'); });
-  document.getElementById('tpl-' + id).classList.add('active');
-  document.getElementById('welcomeScreen').style.display = 'none';
-  document.getElementById('formArea').style.display = 'block';
-  var tpl = TEMPLATES[id];
-  var info = tpl[lang] || tpl['ar'];
-  document.getElementById('formTitleEn').textContent = tpl.ar.titleEn;
-  document.getElementById('formTitle').textContent = info.title;
-  document.getElementById('formSubtitle').textContent = T[lang].formSubtitle;
-  renderFields(id, tpl.fields);
-  updatePreview(id);
-  updateProgress(id);
-}
-
-function renderFields(templateId, fields) {
-  var container = document.getElementById('fieldsContainer');
-  container.innerHTML = '';
-  fields.forEach(function(f) {
-    var saved = formData[templateId][f.id] || '';
-    var info = f[lang] || f['ar'];
-    var ph = (f.ph && (f.ph[lang] || f.ph['ar'])) || '';
-    var otherLang = lang === 'ar' ? 'en' : 'ar';
-    var otherInfo = f[otherLang] || {};
-    var section = document.createElement('div');
-    section.className = 'field-section';
-    var hintId = 'hint-' + templateId + '-' + f.id;
-    var headerHTML = '<div class="field-header">'
-      + '<div class="field-label-wrap">'
-      + '<span class="field-label">' + escHtml(info.label) + '</span>'
-      + '<span class="field-label-en">' + escHtml(otherInfo.label || '') + '</span>'
-      + '</div>'
-      + '<button class="field-hint-btn" id="hbtn-' + hintId + '">?</button>'
-      + '</div>';
-    var bodyHTML = '<div class="field-body">'
-      + '<div class="field-hint-box" id="' + hintId + '">' + escHtml(info.hint || '') + '</div>'
-      + renderInput(f, templateId, saved, ph)
-      + '</div>';
-    section.innerHTML = headerHTML + bodyHTML;
-    container.appendChild(section);
-    // Attach hint button event
-    document.getElementById('hbtn-' + hintId).addEventListener('click', function() {
-      toggleHint(hintId);
-    });
-    // Attach events to inputs
-    if (f.type === 'text' || f.type === 'textarea') {
-      var el = document.getElementById('field-' + templateId + '-' + f.id);
-      if (el) {
-        el.addEventListener('input', function() {
-          formData[templateId][f.id] = el.value;
-          updatePreview(templateId);
-          updateProgress(templateId);
-        });
-      }
-    } else if (f.type === 'select') {
-      var sel = document.getElementById('field-' + templateId + '-' + f.id);
-      if (sel) {
-        sel.addEventListener('change', function() {
-          formData[templateId][f.id] = sel.value;
-          updatePreview(templateId);
-          updateProgress(templateId);
-        });
-      }
-    } else if (f.type === 'questions') {
-      var savedQs = formData[templateId][f.id + '_list'] || [''];
-      renderQuestions(templateId, f.id, savedQs, ph);
-      var addBtn = document.getElementById('addq-' + templateId + '-' + f.id);
-      if (addBtn) {
-        addBtn.addEventListener('click', function() {
-          var list = formData[templateId][f.id + '_list'] || [''];
-          list.push('');
-          renderQuestions(templateId, f.id, list, ph);
-        });
-      }
-    }
-  });
-}
-
-function renderInput(f, templateId, saved, ph) {
-  if (f.type === 'text') {
-    return '<input type="text" id="field-' + templateId + '-' + f.id + '" placeholder="' + escAttr(ph) + '" value="' + escAttr(saved) + '">';
-  }
-  if (f.type === 'textarea') {
-    return '<textarea id="field-' + templateId + '-' + f.id + '" rows="5" placeholder="' + escAttr(ph) + '">' + escHtml(saved) + '</textarea>';
-  }
-  if (f.type === 'select') {
-    var options = (f.options && (f.options[lang] || f.options['ar'])) || [];
-    var opts = options.map(function(o) {
-      return '<option value="' + escAttr(o) + '"' + (saved === o ? ' selected' : '') + '>' + escHtml(o) + '</option>';
-    }).join('');
-    return '<select class="field-select" id="field-' + templateId + '-' + f.id + '">' + opts + '</select>';
-  }
-  if (f.type === 'questions') {
-    return '<div class="questions-list" id="qlist-' + templateId + '-' + f.id + '"></div>'
-      + '<button class="add-q-btn" id="addq-' + templateId + '-' + f.id + '">' + T[lang].addQ + '</button>';
-  }
-  return '';
-}
-
-function renderQuestions(templateId, fieldId, savedQs, ph) {
-  var container = document.getElementById('qlist-' + templateId + '-' + fieldId);
-  if (!container) return;
-  container.innerHTML = '';
-  formData[templateId][fieldId + '_list'] = savedQs;
-  savedQs.forEach(function(q, i) {
-    var item = document.createElement('div');
-    item.className = 'question-item';
-    var numDiv = document.createElement('div');
-    numDiv.className = 'question-num';
-    numDiv.textContent = i + 1;
-    var inp = document.createElement('input');
-    inp.type = 'text';
-    inp.placeholder = ph;
-    inp.value = q;
-    (function(idx) {
-      inp.addEventListener('input', function() {
-        formData[templateId][fieldId + '_list'][idx] = inp.value;
-        updatePreview(templateId);
-        updateProgress(templateId);
-      });
-    })(i);
-    item.appendChild(numDiv);
-    item.appendChild(inp);
-    container.appendChild(item);
-  });
-}
-
-function toggleHint(id) {
-  var el = document.getElementById(id);
-  if (el) el.classList.toggle('visible');
-}
-
-function updateProgress(templateId) {
-  var tpl = TEMPLATES[templateId];
-  var total = tpl.fields.length;
-  var filled = 0;
-  tpl.fields.forEach(function(f) {
-    var val;
-    if (f.type === 'questions') {
-      val = (formData[templateId][f.id + '_list'] || []).filter(function(q) { return q && q.trim(); }).length;
-    } else {
-      val = (formData[templateId][f.id] || '').trim().length;
-    }
-    if (val > 0) filled++;
-  });
-  var pct = Math.round((filled / total) * 100);
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressPct').textContent = pct + '%';
-}
-
-function updatePreview(templateId) {
-  var tpl = TEMPLATES[templateId];
-  var style = document.getElementById('styleSelect').value;
-  document.getElementById('styleTag').textContent = style;
-  var el = document.getElementById('previewEmpty');
-  if (el) el.style.display = 'none';
-  var info = tpl[lang] || tpl['ar'];
-  var data = formData[templateId] || {};
-  var uniName = lang === 'ar' ? 'جامعة الباحث العلمية' : 'Academic Research University';
-  var html = '<div class="doc-uni-header">'
-    + '<div class="doc-uni-name">' + escHtml(uniName) + '</div>'
-    + '<div class="doc-doc-type">' + escHtml(info.title) + '</div>'
-    + '<div class="doc-style-tag">' + style + ' Format | ' + new Date().getFullYear() + '</div>'
-    + '</div>';
-  tpl.fields.forEach(function(f) {
-    var finfo = f[lang] || f['ar'];
-    var val = '';
-    if (f.type === 'questions') {
-      var list = data[f.id + '_list'] || [];
-      val = list.filter(function(q) { return q && q.trim(); }).map(function(q, i) { return (i + 1) + '. ' + q; }).join('\n');
-    } else {
-      val = data[f.id] || '';
-    }
-    var bodyHTML = val.trim()
-      ? '<div class="doc-section-body">' + escHtml(val) + '</div>'
-      : '<div class="doc-placeholder">' + T[lang].notEntered + '</div>';
-    html += '<div class="doc-section">'
-      + '<div class="doc-section-title">' + escHtml(finfo.label) + '</div>'
-      + bodyHTML
-      + '</div>';
-  });
-  document.getElementById('previewDoc').innerHTML = html;
-}
-
-function onStyleChange() {
-  var style = document.getElementById('styleSelect').value;
-  document.getElementById('styleTag').textContent = style;
-  if (currentTemplate) updatePreview(currentTemplate);
-}
-
-function buildDocContent() {
-  if (!currentTemplate) return null;
-  var tpl = TEMPLATES[currentTemplate];
-  var info = tpl[lang] || tpl['ar'];
-  var data = formData[currentTemplate] || {};
-  var style = document.getElementById('styleSelect').value;
-  var uniName = lang === 'ar' ? 'جامعة الباحث العلمية' : 'Academic Research University';
-  var dir = lang === 'ar' ? 'rtl' : 'ltr';
-  var align = lang === 'ar' ? 'right' : 'left';
-  var sections = [];
-  tpl.fields.forEach(function(f) {
-    var finfo = f[lang] || f['ar'];
-    var val = '';
-    if (f.type === 'questions') {
-      var list = data[f.id + '_list'] || [];
-      val = list.filter(function(q){ return q && q.trim(); }).map(function(q,i){ return (i+1)+'. '+q; }).join('\n');
-    } else {
-      val = data[f.id] || '';
-    }
-    sections.push({ label: finfo.label, value: val });
-  });
-  return { title: info.title, uniName: uniName, style: style, dir: dir, align: align, sections: sections };
-}
-
-function exportDoc() {
-  var d = buildDocContent();
-  if (!d) { showToast(lang === 'ar' ? 'اختر قالباً أولاً' : 'Please select a template first'); return; }
-  // Build HTML-based Word document (opens in Word)
-  var rowsHTML = d.sections.map(function(s) {
-    var val = s.value.trim() || (lang === 'ar' ? 'لم يُدخَل بعد' : 'Not yet entered');
-    // Convert newlines to <br>
-    var valHTML = val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
-    return '<h2 style="font-size:13pt;color:#0f0e0d;border-bottom:1px solid #ccc;padding-bottom:4pt;margin-top:18pt;">'
-      + s.label.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-      + '</h2>'
-      + '<p style="font-size:12pt;line-height:1.8;color:#333;margin-top:6pt;">' + valHTML + '</p>';
-  }).join('');
-
-  var html = '<!DOCTYPE html><html><head>'
-    + '<meta charset="UTF-8">'
-    + '<style>'
-    + 'body{font-family:\'Times New Roman\',serif;direction:' + d.dir + ';text-align:' + d.align + ';margin:2.5cm;line-height:1.8;}'
-    + 'h1{font-size:16pt;text-align:center;color:#0f0e0d;margin-bottom:6pt;}'
-    + 'h2{font-size:13pt;}'
-    + '.header{text-align:center;border-bottom:2pt solid #000;padding-bottom:12pt;margin-bottom:24pt;}'
-    + '.style-tag{font-size:9pt;color:#888;margin-top:4pt;}'
-    + '</style>'
-    + '</head><body>'
-    + '<div class="header">'
-    + '<div style="font-size:11pt;font-weight:bold;">' + d.uniName + '</div>'
-    + '<h1>' + d.title.replace(/&/g,'&amp;') + '</h1>'
-    + '<div class="style-tag">' + d.style + ' Format | ' + new Date().getFullYear() + '</div>'
-    + '</div>'
-    + rowsHTML
-    + '</body></html>';
-
-  var blob = new Blob(['\ufeff' + html], { type: 'application/msword;charset=utf-8' });
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement('a');
-  a.href = url;
-  a.download = (currentTemplate || 'research') + '_fajr.doc';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  showToast(T[lang].toastWord);
-}
-
-function exportPDF() {
-  var d = buildDocContent();
-  if (!d) { showToast(lang === 'ar' ? 'اختر قالباً أولاً' : 'Please select a template first'); return; }
-  var rowsHTML = d.sections.map(function(s) {
-    var val = s.value.trim() || (lang === 'ar' ? 'لم يُدخَل بعد' : 'Not yet entered');
-    var valHTML = val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
-    return '<div style="margin-bottom:18pt;">'
-      + '<div style="font-size:11pt;font-weight:bold;color:#0f0e0d;border-bottom:1px solid #ccc;padding-bottom:4pt;margin-bottom:8pt;text-transform:uppercase;letter-spacing:0.05em;">'
-      + s.label.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-      + '</div>'
-      + '<div style="font-size:11pt;line-height:1.9;color:#333;">' + valHTML + '</div>'
-      + '</div>';
-  }).join('');
-
-  var html = '<!DOCTYPE html><html><head>'
-    + '<meta charset="UTF-8">'
-    + '<title>' + d.title + '</title>'
-    + '</head><body style="font-family:Georgia,serif;direction:' + d.dir + ';text-align:' + d.align + ';margin:0;padding:2cm;">'
-    + '<div style="text-align:center;border-bottom:2pt solid #000;padding-bottom:14pt;margin-bottom:28pt;">'
-    + '<div style="font-size:11pt;font-weight:bold;">' + d.uniName + '</div>'
-    + '<div style="font-size:15pt;font-weight:bold;margin-top:6pt;">' + d.title.replace(/&/g,'&amp;') + '</div>'
-    + '<div style="font-size:9pt;color:#888;margin-top:4pt;">' + d.style + ' Format | ' + new Date().getFullYear() + '</div>'
-    + '</div>'
-    + rowsHTML
-    + '<script>window.onload=function(){window.print();}<\/script>'
-    + '</body></html>';
-
-  var w = window.open('', '_blank');
-  if (w) {
-    w.document.write(html);
-    w.document.close();
-    showToast(T[lang].toastPdf);
-  } else {
-    showToast(lang === 'ar' ? 'السماح بالنوافذ المنبثقة من إعدادات المتصفح' : 'Allow pop-ups in browser settings');
-  }
-}
-
-function showToast(msg) {
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(function() { t.classList.remove('show'); }, 3000);
-}
-
-function escHtml(s) {
-  if (!s) return '';
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-function escAttr(s) {
-  if (!s) return '';
-  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-// Init
-setTimeout(function() { selectTemplate('proposal'); }, 100);
-</script>
-
 <footer style="background:#0f0e0d;border-top:3px solid #c9a84c;padding:2.5rem 2rem;text-align:center;font-family:'Tajawal',sans-serif;">
-  <div style="display:inline-block;border:1px solid #2a2925;border-radius:16px;padding:1.75rem 3rem;background:linear-gradient(135deg,#1a1916,#111);box-shadow:0 0 40px rgba(201,168,76,0.08);max-width:600px;width:100%;">
-    <div style="font-size:1.5rem;margin-bottom:.6rem;color:#c9a84c;">✦</div>
-    <div style="font-size:.65rem;color:#c9a84c;letter-spacing:.2em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;margin-bottom:.85rem;">إهـداء</div>
-    <p style="font-size:1.05rem;color:#e8e2d8;line-height:2;font-weight:400;margin:0;">
+  <div style="display:inline-block;border:1px solid #2a2925;border-radius:16px;padding:1.75rem 3rem;background:linear-gradient(135deg,#1a1916,#111);max-width:600px;width:100%;">
+    <div style="font-size:1.4rem;margin-bottom:.5rem;color:#c9a84c;">🌅</div>
+    <div style="font-size:.62rem;color:#c9a84c;letter-spacing:.2em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;margin-bottom:.8rem;">إهـداء</div>
+    <p style="font-size:1rem;color:#e8e2d8;line-height:2;font-weight:400;margin:0;">
       إلى كل باحث يسعى لإضافة حرف في كتاب المعرفة،<br>
       إلى كل قلم لم يتوقف رغم صعوبة الطريق،<br>
       <span style="color:#c9a84c;font-weight:700;">هذا الموقع لكم.</span>
     </p>
-    <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid #2a2925;font-size:.82rem;color:#7a7268;">
+    <div style="margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid #2a2925;font-size:.8rem;color:#7a7268;">
       بكل تقدير واحترام،
-      <span style="color:#c9a84c;font-weight:700;font-size:1rem;display:block;margin-top:.3rem;">سلطان بن عايد</span>
+      <span style="color:#c9a84c;font-weight:700;font-size:.95rem;display:block;margin-top:.25rem;">سلطان بن عايد</span>
     </div>
   </div>
-  <div style="margin-top:1rem;font-size:.65rem;color:#3a3830;font-family:'IBM Plex Mono',monospace;">فجر © 2025 — Sultan-Ayed</div>
+  <div style="margin-top:1rem;font-size:.62rem;color:#3a3830;font-family:'IBM Plex Mono',monospace;">فجر © 2025 — Sultan-Ayed</div>
 </footer>
 
+<script>
+var lang='ar', currentTemplate=null, formData={};
+
+var T={
+  ar:{sideLabel:'اختر نوع القالب',welcomeTitle:'ابدأ رحلتك البحثية',welcomeSub:'اختر نوع القالب المناسب من القائمة لتبدأ في كتابة بحثك بطريقة منظمة واحترافية.',welcomeArrow:'← اختر القالب من القائمة الجانبية',previewLabel:'معاينة مباشرة',progressLabel:'اكتمال النموذج',autoSaveLabel:'حفظ تلقائي مفعّل',exportBtn:'تصدير Word',exportPdfBtn:'تصدير PDF',exportJsonBtn:'حفظ JSON',addQ:'+ أضف سؤالاً',formSubtitle:'أكمل الخانات التالية وستظهر معاينة بحثك في الجانب الأيسر',previewEmpty:'اختر قالباً لترى المعاينة هنا...',notEntered:'[ لم يُدخَل بعد ]',toastWord:'✔ تم إنشاء ملف Word',toastPdf:'✔ جاري فتح نافذة الطباعة',toastSaved:'✔ تم حفظ المسودة',toastLoaded:'✔ تم تحميل المسودة',toastDeleted:'✔ تم حذف المسودة',toastCopied:'✔ تم نسخ الاقتباس',hSave:'حفظ المسودة',hLoad:'تحميل مسودة',draftsLabel:'المسودات المحفوظة',noDrafts:'لا توجد مسودات محفوظة',mTitle:'💾 حفظ المسودة',mSub:'أدخل اسماً للمسودة لتتمكن من العودة إليها لاحقاً',genCite:'توليد الاقتباس',copyCite:'نسخ',methodTitle:'مساعد اختيار المنهج',methodQ:'أجب على الأسئلة لتحديد المنهج المناسب',qualityTitle:'تقييم جودة البحث',words:'كلمة'},
+  en:{sideLabel:'Choose Template',welcomeTitle:'Start Your Research Journey',welcomeSub:'Select a template type from the sidebar to begin writing your research in an organized, professional manner.',welcomeArrow:'Choose a template from the sidebar →',previewLabel:'Live Preview',progressLabel:'Form Completion',autoSaveLabel:'Auto-save enabled',exportBtn:'Export Word',exportPdfBtn:'Export PDF',exportJsonBtn:'Save JSON',addQ:'+ Add Question',formSubtitle:'Complete the fields below and your research preview will appear on the right.',previewEmpty:'Select a template to see the preview here...',notEntered:'[ Not yet entered ]',toastWord:'✔ Word file created',toastPdf:'✔ Opening print window',toastSaved:'✔ Draft saved',toastLoaded:'✔ Draft loaded',toastDeleted:'✔ Draft deleted',toastCopied:'✔ Citation copied',hSave:'Save Draft',hLoad:'Load Draft',draftsLabel:'Saved Drafts',noDrafts:'No saved drafts',mTitle:'💾 Save Draft',mSub:'Enter a name for your draft to return to it later',genCite:'Generate Citation',copyCite:'Copy',methodTitle:'Methodology Assistant',methodQ:'Answer questions to find the right approach',qualityTitle:'Research Quality Check',words:'words'}
+};
+
+var WORD_LIMITS={rtitle:15,abstract:300,intro:500,problem:300,objectives:200,methodology:200,findings:500,results:500,conclusion:200,scope:200,themes:400,gaps:200,references:0,keywords:0,questions:0};
+
+var TEMPLATES={
+  proposal:{
+    ar:{title:'المقترح البحثي',titleEn:'RESEARCH PROPOSAL TEMPLATE'},
+    en:{title:'Research Proposal',titleEn:'RESEARCH PROPOSAL TEMPLATE'},
+    fields:[
+      {id:'rtitle',type:'text',ar:{label:'عنوان البحث',hint:'صغ عنواناً واضحاً ومحدداً يعكس مشكلة الدراسة. يفضل ألا يتجاوز 15 كلمة.'},en:{label:'Research Title',hint:'Write a clear title reflecting the research problem. Ideally no more than 15 words.'},ph:{ar:'مثال: أثر استخدام الذكاء الاصطناعي على التحصيل الأكاديمي...',en:'e.g., The Impact of AI Tools on Academic Achievement...'}},
+      {id:'problem',type:'textarea',ar:{label:'مشكلة الدراسة',hint:'ابدأ بوصف الظاهرة، ثم بين الفجوة المعرفية، واختم بصياغة المشكلة كسؤال محوري.'},en:{label:'Problem Statement',hint:'Describe the phenomenon, identify the knowledge gap, then frame the problem as a central question.'},ph:{ar:'تعد ظاهرة... من أبرز التحديات التي تواجه...',en:'The phenomenon of... represents one of the most pressing challenges in...'}},
+      {id:'questions',type:'questions',ar:{label:'أسئلة الدراسة',hint:'صغ كل سؤال بدءاً بـ ما، كيف، هل. يجب أن تكون الأسئلة قابلة للقياس.'},en:{label:'Research Questions',hint:'Frame each question starting with What, How, Does. Questions must be measurable.'},ph:{ar:'أدخل سؤالاً بحثياً...',en:'Enter a research question...'}},
+      {id:'objectives',type:'textarea',ar:{label:'أهداف الدراسة',hint:'استخدم أفعال إجرائية: يحدد، يقيس، يقارن، يحلل، يختبر.'},en:{label:'Study Objectives',hint:'Use action verbs: identify, measure, compare, analyze, test.'},ph:{ar:'1. التعرف على...\n2. قياس مستوى...\n3. المقارنة بين...',en:'1. To identify...\n2. To measure...\n3. To compare...'}},
+      {id:'methodology',type:'method',ar:{label:'منهجية الدراسة',hint:'حدد المنهج والأدوات والعينة. برر اختيار المنهج بناءً على طبيعة مشكلة الدراسة.'},en:{label:'Methodology',hint:'Specify the approach, instruments, and sample. Justify your choice.'},
+        options:{ar:['المنهج الكمي','المنهج النوعي','المنهج المختلط','المنهج التجريبي','المنهج الوصفي'],en:['Quantitative','Qualitative','Mixed Methods','Experimental','Descriptive']}},
+      {id:'references',type:'references',ar:{label:'المراجع والمصادر',hint:'أدخل مراجعك أو استخدم مولد الاقتباسات التلقائي بالأسفل.'},en:{label:'References',hint:'Enter your references or use the citation generator below.'},ph:{ar:'الحربي، خالد. (2022). عنوان الكتاب. دار النشر.',en:'Smith, J. (2021). Title of Work. Publisher.'}}
+    ]
+  },
+  literature:{
+    ar:{title:'مراجعة الأدبيات',titleEn:'LITERATURE REVIEW TEMPLATE'},
+    en:{title:'Literature Review',titleEn:'LITERATURE REVIEW TEMPLATE'},
+    fields:[
+      {id:'rtitle',type:'text',ar:{label:'عنوان المراجعة',hint:'حدد الموضوع والنطاق الزمني.'},en:{label:'Review Title',hint:'Define the topic and time scope.'},ph:{ar:'مراجعة منهجية لدراسات...',en:'A Systematic Review of...'}},
+      {id:'scope',type:'textarea',ar:{label:'نطاق المراجعة وهدفها',hint:'وضح الهدف والفئة المستهدفة والنطاق الجغرافي والزمني.'},en:{label:'Scope and Purpose',hint:'Clarify the purpose, target population, and scope.'},ph:{ar:'تهدف هذه المراجعة إلى تجميع وتحليل الدراسات التي تناولت...',en:'This review aims to synthesize and analyze studies that examined...'}},
+      {id:'themes',type:'textarea',ar:{label:'المحاور والموضوعات الرئيسية',hint:'صنف الأدبيات ضمن محاور موضوعية واذكر الاتفاقات والاختلافات.'},en:{label:'Main Themes',hint:'Categorize literature into thematic groups.'},ph:{ar:'المحور الأول: ...\nالمحور الثاني: ...',en:'Theme 1: ...\nTheme 2: ...'}},
+      {id:'gaps',type:'textarea',ar:{label:'الفجوات البحثية',hint:'هذا أهم جزء. حدد ما لم تدرسه الأبحاث السابقة.'},en:{label:'Research Gaps',hint:'Identify what prior research has not addressed.'},ph:{ar:'رغم تعدد الدراسات، إلا أنها أغفلت...',en:'Despite extensive research, existing studies have neglected...'}},
+      {id:'references',type:'references',ar:{label:'قائمة المراجع',hint:'رتب المراجع أبجدياً حسب نمط التوثيق المختار.'},en:{label:'References',hint:'Arrange references alphabetically.'},ph:{ar:'أدخل المراجع هنا...',en:'Enter references here...'}}
+    ]
+  },
+  thesis:{
+    ar:{title:'الأطروحة الأكاديمية',titleEn:'THESIS / DISSERTATION TEMPLATE'},
+    en:{title:'Thesis / Dissertation',titleEn:'THESIS / DISSERTATION TEMPLATE'},
+    fields:[
+      {id:'rtitle',type:'text',ar:{label:'عنوان الأطروحة',hint:'يجب أن يكون شاملاً ودقيقاً ويعكس محتوى الأطروحة.'},en:{label:'Thesis Title',hint:'The title must be comprehensive and precise.'},ph:{ar:'عنوان الأطروحة...',en:'Thesis title...'}},
+      {id:'abstract',type:'textarea',ar:{label:'الملخص',hint:'200-350 كلمة تشمل: المشكلة، المنهجية، النتائج، التوصيات.'},en:{label:'Abstract',hint:'200-350 words covering: problem, methodology, findings, recommendations.'},ph:{ar:'تتناول هذه الدراسة مشكلة... باستخدام منهج...',en:'This study examines the problem of... using a... methodology.'}},
+      {id:'intro',type:'textarea',ar:{label:'الفصل الأول: المقدمة',hint:'ابدأ بعام ثم ضيق نحو الخاص. تضمن: السياق، الأهمية، المشكلة، الأهداف.'},en:{label:'Chapter 1: Introduction',hint:'Begin broadly then narrow to the specific. Include: context, significance, problem, objectives.'},ph:{ar:'يشهد العالم تحولات متسارعة في مجال...',en:'The world is witnessing rapid transformations in...'}},
+      {id:'methodology',type:'method',ar:{label:'منهجية البحث',hint:'اشرح بالتفصيل: المنهج، العينة، الأدوات، الأساليب الإحصائية.'},en:{label:'Research Methodology',hint:'Describe: approach, sample, instruments, statistical methods.'},options:{ar:['المنهج الكمي','المنهج النوعي','المنهج المختلط','المنهج التجريبي','المنهج الوصفي'],en:['Quantitative','Qualitative','Mixed Methods','Experimental','Descriptive']}},
+      {id:'findings',type:'textarea',ar:{label:'النتائج والتحليل',hint:'اعرض النتائج بترتيب منطقي يتوافق مع أسئلة الدراسة.'},en:{label:'Findings and Analysis',hint:'Present findings in a logical order aligned with research questions.'},ph:{ar:'أظهرت نتائج الدراسة أن...',en:'The findings of the study revealed that...'}},
+      {id:'references',type:'references',ar:{label:'المراجع',hint:'أدخل جميع المراجع المستخدمة.'},en:{label:'References',hint:'Enter all references used.'},ph:{ar:'المراجع...',en:'References...'}}
+    ]
+  },
+  paper:{
+    ar:{title:'الورقة البحثية',titleEn:'RESEARCH PAPER TEMPLATE'},
+    en:{title:'Research Paper',titleEn:'RESEARCH PAPER TEMPLATE'},
+    fields:[
+      {id:'rtitle',type:'text',ar:{label:'عنوان الورقة',hint:'عنوان قصير لا يتجاوز 12 كلمة يحمل الكلمات المفتاحية.'},en:{label:'Paper Title',hint:'A concise title not exceeding 12 words with keywords.'},ph:{ar:'عنوان الورقة البحثية...',en:'Paper title...'}},
+      {id:'abstract',type:'textarea',ar:{label:'الملخص',hint:'150-250 كلمة: الهدف، المنهج، النتائج، الاستنتاج.'},en:{label:'Abstract',hint:'150-250 words: Purpose, Methodology, Findings, Conclusion.'},ph:{ar:'الهدف: ...\nالمنهج: ...\nالنتائج: ...',en:'Purpose: ...\nMethodology: ...\nFindings: ...'}},
+      {id:'keywords',type:'text',ar:{label:'الكلمات المفتاحية',hint:'5-7 كلمات مفتاحية مفصولة بفاصلة.'},en:{label:'Keywords',hint:'5-7 keywords separated by commas.'},ph:{ar:'الكلمة الأولى، الثانية، الثالثة...',en:'keyword one, keyword two...'}},
+      {id:'intro',type:'textarea',ar:{label:'المقدمة',hint:'سياق الدراسة، مراجعة موجزة للأدبيات، الفجوة البحثية، هدف الورقة.'},en:{label:'Introduction',hint:'Study context, brief literature overview, research gap, aim.'},ph:{ar:'تعد قضية... من القضايا المحورية في مجال...',en:'The issue of... represents a central concern in...'}},
+      {id:'results',type:'textarea',ar:{label:'النتائج والمناقشة',hint:'ناقش النتائج في ضوء الأدبيات السابقة.'},en:{label:'Results and Discussion',hint:'Discuss findings in light of prior literature.'},ph:{ar:'أسفرت نتائج التحليل عن...',en:'The analysis yielded...'}},
+      {id:'conclusion',type:'textarea',ar:{label:'الخاتمة والتوصيات',hint:'لخص أبرز النتائج، اذكر المحدودية، قدم توصيات للباحثين المستقبليين.'},en:{label:'Conclusion and Recommendations',hint:'Summarize findings, acknowledge limitations, recommend for future research.'},ph:{ar:'خلصت الدراسة إلى...',en:'The study concluded that...'}},
+      {id:'references',type:'references',ar:{label:'المراجع',hint:'رتب المراجع وفق النمط المختار.'},en:{label:'References',hint:'Arrange references per selected style.'},ph:{ar:'المراجع...',en:'References...'}}
+    ]
+  }
+};
+
+var TEMPLATE_META={
+  proposal:{ar:{name:'المقترح البحثي',desc:'Research Proposal'},en:{name:'Research Proposal',desc:'خطط الأبحاث'}},
+  literature:{ar:{name:'مراجعة الأدبيات',desc:'Literature Review'},en:{name:'Literature Review',desc:'نقد الدراسات'}},
+  thesis:{ar:{name:'الأطروحة الأكاديمية',desc:'Thesis / Dissertation'},en:{name:'Thesis / Dissertation',desc:'أعمال أكاديمية'}},
+  paper:{ar:{name:'الورقة البحثية',desc:'Research Paper'},en:{name:'Research Paper',desc:'للنشر في المجلات'}}
+};
+
+/* ── LANG ── */
+function setLang(l){
+  lang=l;
+  document.documentElement.lang=l;
+  document.body.classList.toggle('en',l==='en');
+  document.body.dir=l==='ar'?'rtl':'ltr';
+  document.getElementById('btnAr').classList.toggle('active',l==='ar');
+  document.getElementById('btnEn').classList.toggle('active',l==='en');
+  var t=T[l];
+  ['sideLabel','welcomeTitle','welcomeSub','welcomeArrow','previewLabel','progressLabel','autoSaveLabel',
+   'exportBtn','exportPdfBtn','exportJsonBtn','hSave','hLoad','draftsLabel'].forEach(function(id){
+    var el=document.getElementById(id); if(el) el.textContent=t[id]||'';
+  });
+  document.getElementById('previewEmpty').textContent=t.previewEmpty;
+  document.getElementById('mTitle').textContent=t.mTitle;
+  document.getElementById('mSub').textContent=t.mSub;
+  Object.keys(TEMPLATE_META).forEach(function(k){
+    var m=TEMPLATE_META[k][l];
+    document.querySelector('#tpl-'+k+' .t-name').textContent=m.name;
+    document.querySelector('#tpl-'+k+' .t-desc').textContent=m.desc;
+  });
+  renderDraftsList();
+  if(currentTemplate) selectTemplate(currentTemplate);
+}
+
+/* ── TEMPLATE ── */
+function selectTemplate(id){
+  currentTemplate=id;
+  if(!formData[id]) formData[id]={};
+  document.querySelectorAll('.template-btn').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('tpl-'+id).classList.add('active');
+  document.getElementById('welcomeScreen').style.display='none';
+  document.getElementById('formArea').style.display='block';
+  var tpl=TEMPLATES[id];
+  var info=tpl[lang]||tpl['ar'];
+  document.getElementById('formTitleEn').textContent=tpl.ar.titleEn;
+  document.getElementById('formTitle').textContent=info.title;
+  document.getElementById('formSubtitle').textContent=T[lang].formSubtitle;
+  renderFields(id,tpl.fields);
+  updatePreview(id);
+  updateProgress(id);
+  autoSave();
+}
+
+/* ── RENDER FIELDS ── */
+function renderFields(templateId,fields){
+  var container=document.getElementById('fieldsContainer');
+  container.innerHTML='';
+  fields.forEach(function(f){
+    var saved=formData[templateId][f.id]||'';
+    var info=f[lang]||f['ar'];
+    var ph=(f.ph&&(f.ph[lang]||f.ph['ar']))||'';
+    var otherInfo=(f[lang==='ar'?'en':'ar'])||{};
+    var section=document.createElement('div');
+    section.className='field-section';
+    var wl=WORD_LIMITS[f.id]||0;
+    var wcHTML=wl>0?'<span class="word-counter" id="wc-'+templateId+'-'+f.id+'">0 / '+wl+' '+T[lang].words+'</span>':'';
+    var hintId='hint-'+templateId+'-'+f.id;
+    section.innerHTML='<div class="field-header">'
+      +'<div class="field-label-wrap"><span class="field-label">'+escHtml(info.label)+'</span>'
+      +'<span class="field-label-en">'+escHtml(otherInfo.label||'')+'</span></div>'
+      +'<div class="field-header-actions">'+wcHTML
+      +'<button class="field-hint-btn" id="hbtn-'+hintId+'">?</button></div></div>'
+      +'<div class="field-body"><div class="field-hint-box" id="'+hintId+'">'+escHtml(info.hint||'')+'</div>'
+      +renderInput(f,templateId,saved,ph)+'</div>';
+    container.appendChild(section);
+    document.getElementById('hbtn-'+hintId).addEventListener('click',function(){toggleHint(hintId);});
+    attachInputEvents(f,templateId,ph);
+    if(wl>0) updateWordCount(templateId,f.id,saved);
+  });
+}
+
+function renderInput(f,templateId,saved,ph){
+  if(f.type==='text'){
+    return '<input type="text" id="field-'+templateId+'-'+f.id+'" placeholder="'+escAttr(ph)+'" value="'+escAttr(saved)+'">';
+  }
+  if(f.type==='textarea'){
+    return '<textarea id="field-'+templateId+'-'+f.id+'" rows="5" placeholder="'+escAttr(ph)+'">'+escHtml(saved)+'</textarea>';
+  }
+  if(f.type==='method'){
+    var opts=(f.options&&(f.options[lang]||f.options['ar']))||[];
+    var selOpts=opts.map(function(o){return '<option value="'+escAttr(o)+'"'+(saved===o?' selected':'')+'>'+escHtml(o)+'</option>';}).join('');
+    return '<select class="field-select" id="field-'+templateId+'-'+f.id+'">'+'<option value="">-- اختر --</option>'+selOpts+'</select>'
+      +renderMethodHelper(templateId,f.id);
+  }
+  if(f.type==='questions'){
+    return '<div class="questions-list" id="qlist-'+templateId+'-'+f.id+'"></div>'
+      +'<button class="add-q-btn" id="addq-'+templateId+'-'+f.id+'">'+T[lang].addQ+'</button>';
+  }
+  if(f.type==='references'){
+    return '<textarea id="field-'+templateId+'-'+f.id+'" rows="4" placeholder="'+escAttr(ph)+'" style="direction:ltr;text-align:left;font-family:Georgia,serif;font-size:.8rem">'+escHtml(saved)+'</textarea>'
+      +renderCiteGenerator(templateId,f.id);
+  }
+  return '';
+}
+
+function renderMethodHelper(templateId,fieldId){
+  var t=T[lang];
+  return '<div class="method-helper"><div class="method-q">🧭 '+t.methodTitle+'</div>'
+    +'<div class="method-options">'
+    +'<label class="method-opt"><input type="radio" name="mq-'+templateId+'-'+fieldId+'" value="numbers" onchange="calcMethod(\''+templateId+'\',\''+fieldId+'\')"><div><div class="method-opt-label">'+(lang==='ar'?'بياناتي أرقام وإحصاءات':'My data is numbers and statistics')+'</div></div></label>'
+    +'<label class="method-opt"><input type="radio" name="mq-'+templateId+'-'+fieldId+'" value="experience" onchange="calcMethod(\''+templateId+'\',\''+fieldId+'\')"><div><div class="method-opt-label">'+(lang==='ar'?'أدرس تجارب وآراء الناس':'I study people\'s experiences and opinions')+'</div></div></label>'
+    +'<label class="method-opt"><input type="radio" name="mq-'+templateId+'-'+fieldId+'" value="both" onchange="calcMethod(\''+templateId+'\',\''+fieldId+'\')"><div><div class="method-opt-label">'+(lang==='ar'?'كلاهما معاً':'Both together')+'</div></div></label>'
+    +'<label class="method-opt"><input type="radio" name="mq-'+templateId+'-'+fieldId+'" value="experiment" onchange="calcMethod(\''+templateId+'\',\''+fieldId+'\')"><div><div class="method-opt-label">'+(lang==='ar'?'أجري تجربة وأقيس نتائجها':'I run an experiment and measure results')+'</div></div></label>'
+    +'</div>'
+    +'<div class="method-result" id="mres-'+templateId+'-'+fieldId+'"></div>'
+    +'</div>';
+}
+
+function calcMethod(templateId,fieldId){
+  var radios=document.querySelectorAll('input[name="mq-'+templateId+'-'+fieldId+'"]');
+  var val='';
+  radios.forEach(function(r){if(r.checked) val=r.value;});
+  var res=document.getElementById('mres-'+templateId+'-'+fieldId);
+  if(!res) return;
+  var msgs={
+    numbers:{ar:'✅ المنهج الكمي هو الأنسب لك. يعتمد على الأرقام والإحصاء لاختبار الفرضيات.',en:'✅ Quantitative approach is best for you. It relies on numbers and statistics to test hypotheses.'},
+    experience:{ar:'✅ المنهج النوعي هو الأنسب لك. يعتمد على التحليل المعمق للتجارب والمعاني.',en:'✅ Qualitative approach is best for you. It relies on in-depth analysis of experiences and meanings.'},
+    both:{ar:'✅ المنهج المختلط هو الأنسب. يجمع بين الكمي والنوعي لنتائج أشمل.',en:'✅ Mixed methods is best for you. It combines quantitative and qualitative for comprehensive results.'},
+    experiment:{ar:'✅ المنهج التجريبي هو الأنسب. يعتمد على التحكم في المتغيرات وقياس النتائج.',en:'✅ Experimental design is best for you. It relies on controlling variables and measuring outcomes.'}
+  };
+  res.textContent=(msgs[val]&&msgs[val][lang])||'';
+  res.classList.toggle('visible',!!val);
+}
+
+function renderCiteGenerator(templateId,fieldId){
+  var t=T[lang];
+  return '<div class="cite-generator">'
+    +'<div class="cite-gen-title">📖 مولّد الاقتباسات التلقائي</div>'
+    +'<div class="cite-fields">'
+    +'<input type="text" placeholder="'+(lang==='ar'?'اسم المؤلف':'Author Name')+'" id="cAuthor-'+templateId+'-'+fieldId+'" class="cite-field">'
+    +'<input type="text" placeholder="'+(lang==='ar'?'السنة':'Year')+'" id="cYear-'+templateId+'-'+fieldId+'" class="cite-field">'
+    +'<input type="text" placeholder="'+(lang==='ar'?'عنوان العمل':'Title of Work')+'" id="cTitle-'+templateId+'-'+fieldId+'" class="cite-field">'
+    +'<input type="text" placeholder="'+(lang==='ar'?'الناشر / المجلة':'Publisher / Journal')+'" id="cPublisher-'+templateId+'-'+fieldId+'" class="cite-field">'
+    +'</div>'
+    +'<div class="cite-result" id="cResult-'+templateId+'-'+fieldId+'">'+( lang==='ar'?'سيظهر الاقتباس هنا...':'Citation will appear here...')+'</div>'
+    +'<div class="cite-actions">'
+    +'<button class="btn-sm primary" onclick="generateCite(\''+templateId+'\',\''+fieldId+'\')">'+t.genCite+'</button>'
+    +'<button class="btn-sm secondary" onclick="copyCite(\''+templateId+'\',\''+fieldId+'\')">'+t.copyCite+'</button>'
+    +'</div></div>';
+}
+
+function generateCite(templateId,fieldId){
+  var author=document.getElementById('cAuthor-'+templateId+'-'+fieldId).value.trim();
+  var year=document.getElementById('cYear-'+templateId+'-'+fieldId).value.trim();
+  var title=document.getElementById('cTitle-'+templateId+'-'+fieldId).value.trim();
+  var publisher=document.getElementById('cPublisher-'+templateId+'-'+fieldId).value.trim();
+  if(!author&&!title){document.getElementById('cResult-'+templateId+'-'+fieldId).textContent=lang==='ar'?'الرجاء إدخال المؤلف والعنوان على الأقل':'Please enter at least author and title';return;}
+  var style=document.getElementById('styleSelect').value;
+  var cite='';
+  if(style==='APA'){
+    cite=author+(year?' ('+year+').':'.') +(title?' '+title+'.':'')+(publisher?' '+publisher+'.':'');
+  } else if(style==='MLA'){
+    cite=author+(title?' "'+title+'."':'')+(publisher?' '+publisher+',':'')+(year?' '+year+'.':'');
+  } else if(style==='IEEE'){
+    cite=author+(title?', "'+title+'"':'')+(publisher?', '+publisher:'')+(year?', '+year:'')+(title?'.':'');
+  } else {
+    cite=author+(year?' ('+year+').':'.') +(title?' "'+title+'."':'')+(publisher?' '+publisher+'.':'');
+  }
+  document.getElementById('cResult-'+templateId+'-'+fieldId).textContent=cite;
+}
+
+function copyCite(templateId,fieldId){
+  var txt=document.getElementById('cResult-'+templateId+'-'+fieldId).textContent;
+  if(navigator.clipboard){navigator.clipboard.writeText(txt);}
+  showToast(T[lang].toastCopied);
+}
+
+function attachInputEvents(f,templateId,ph){
+  if(f.type==='text'||f.type==='textarea'||f.type==='references'){
+    var el=document.getElementById('field-'+templateId+'-'+f.id);
+    if(el){
+      el.addEventListener('input',function(){
+        formData[templateId][f.id]=el.value;
+        updatePreview(templateId);updateProgress(templateId);
+        if(WORD_LIMITS[f.id]>0) updateWordCount(templateId,f.id,el.value);
+        autoSave();
+      });
+    }
+  } else if(f.type==='method'){
+    var sel=document.getElementById('field-'+templateId+'-'+f.id);
+    if(sel){sel.addEventListener('change',function(){formData[templateId][f.id]=sel.value;updatePreview(templateId);updateProgress(templateId);autoSave();});}
+  } else if(f.type==='questions'){
+    var savedQs=formData[templateId][f.id+'_list']||[''];
+    renderQuestions(templateId,f.id,savedQs,ph);
+    var addBtn=document.getElementById('addq-'+templateId+'-'+f.id);
+    if(addBtn){addBtn.addEventListener('click',function(){
+      var list=formData[templateId][f.id+'_list']||[''];
+      list.push('');renderQuestions(templateId,f.id,list,ph);
+    });}
+  }
+}
+
+function updateWordCount(templateId,fieldId,val){
+  var wc=document.getElementById('wc-'+templateId+'-'+fieldId);
+  if(!wc) return;
+  var words=val.trim()?val.trim().split(/\s+/).length:0;
+  var limit=WORD_LIMITS[fieldId]||0;
+  wc.textContent=words+' / '+limit+' '+T[lang].words;
+  wc.className='word-counter'+(words>limit?' warn':words>=limit*0.7?' good':'');
+}
+
+function renderQuestions(templateId,fieldId,savedQs,ph){
+  var container=document.getElementById('qlist-'+templateId+'-'+fieldId);
+  if(!container) return;
+  container.innerHTML='';
+  formData[templateId][fieldId+'_list']=savedQs;
+  savedQs.forEach(function(q,i){
+    var item=document.createElement('div');item.className='question-item';
+    var num=document.createElement('div');num.className='question-num';num.textContent=i+1;
+    var inp=document.createElement('input');inp.type='text';inp.placeholder=ph;inp.value=q;
+    (function(idx){inp.addEventListener('input',function(){
+      formData[templateId][fieldId+'_list'][idx]=inp.value;
+      updatePreview(templateId);updateProgress(templateId);autoSave();
+    });})(i);
+    item.appendChild(num);item.appendChild(inp);container.appendChild(item);
+  });
+}
+
+/* ── PROGRESS ── */
+function updateProgress(templateId){
+  var tpl=TEMPLATES[templateId],total=tpl.fields.length,filled=0;
+  tpl.fields.forEach(function(f){
+    var val=f.type==='questions'?(formData[templateId][f.id+'_list']||[]).filter(function(q){return q&&q.trim();}).length:(formData[templateId][f.id]||'').trim().length;
+    if(val>0) filled++;
+  });
+  var pct=Math.round((filled/total)*100);
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('progressPct').textContent=pct+'%';
+  updateQualityCheck(templateId,pct);
+}
+
+/* ── QUALITY CHECK ── */
+function updateQualityCheck(templateId,pct){
+  var wrap=document.getElementById('qualityWrap');
+  if(!wrap) return;
+  wrap.style.display='block';
+  var tpl=TEMPLATES[templateId];
+  var issues=[];
+  tpl.fields.forEach(function(f){
+    var val=f.type==='questions'?(formData[templateId][f.id+'_list']||[]).filter(function(q){return q&&q.trim();}).join(' '):(formData[templateId][f.id]||'');
+    var info=f[lang]||f['ar'];
+    if(!val.trim()){issues.push({label:info.label,status:'bad'});}
+    else if(WORD_LIMITS[f.id]>0){
+      var wc=val.trim().split(/\s+/).length;
+      if(wc<WORD_LIMITS[f.id]*0.4) issues.push({label:info.label,status:'warn'});
+      else issues.push({label:info.label,status:'ok'});
+    } else {issues.push({label:info.label,status:'ok'});}
+  });
+  var cls=pct<40?'low':pct<75?'mid':'high';
+  var emoji=pct<40?'🔴':pct<75?'🟡':'🟢';
+  var html='<div style="padding:.4rem">'
+    +'<div style="font-size:.68rem;color:var(--muted);font-family:IBM Plex Mono,monospace;margin-bottom:.4rem">'+T[lang].qualityTitle+'</div>'
+    +'<div class="quality-score '+cls+'">'+pct+'%</div>'
+    +'<div style="display:flex;flex-direction:column;gap:.3rem;margin-top:.5rem">';
+  issues.forEach(function(it){
+    html+='<div style="display:flex;align-items:center;gap:.4rem;font-size:.7rem;color:#9a9082">'
+      +'<div style="width:7px;height:7px;border-radius:50%;flex-shrink:0;background:'+(it.status==='ok'?'#27ae60':it.status==='warn'?'#e67e22':'#c0392b')+'"></div>'
+      +escHtml(it.label)+'</div>';
+  });
+  html+='</div></div>';
+  wrap.innerHTML=html;
+}
+
+/* ── PREVIEW ── */
+function updatePreview(templateId){
+  var tpl=TEMPLATES[templateId];
+  var style=document.getElementById('styleSelect').value;
+  document.getElementById('styleTag').textContent=style;
+  var el=document.getElementById('previewEmpty');if(el) el.style.display='none';
+  var info=tpl[lang]||tpl['ar'];
+  var data=formData[templateId]||{};
+  var uniName=lang==='ar'?'جامعة الباحث العلمية':'Academic Research University';
+  var html='<div class="doc-uni-header"><div class="doc-uni-name">'+escHtml(uniName)+'</div>'
+    +'<div class="doc-doc-type">'+escHtml(info.title)+'</div>'
+    +'<div class="doc-style-tag">'+style+' Format | '+new Date().getFullYear()+'</div></div>';
+  tpl.fields.forEach(function(f){
+    var finfo=f[lang]||f['ar'];
+    var val='';
+    if(f.type==='questions'){var list=data[f.id+'_list']||[];val=list.filter(function(q){return q&&q.trim();}).map(function(q,i){return(i+1)+'. '+q;}).join('\n');}
+    else{val=data[f.id]||'';}
+    var bodyHTML=val.trim()?'<div class="doc-section-body">'+escHtml(val)+'</div>':'<div class="doc-placeholder">'+T[lang].notEntered+'</div>';
+    html+='<div class="doc-section"><div class="doc-section-title">'+escHtml(finfo.label)+'</div>'+bodyHTML+'</div>';
+  });
+  document.getElementById('previewDoc').innerHTML=html;
+}
+
+function onStyleChange(){
+  document.getElementById('styleTag').textContent=document.getElementById('styleSelect').value;
+  if(currentTemplate) updatePreview(currentTemplate);
+}
+
+/* ── HINT ── */
+function toggleHint(id){var el=document.getElementById(id);if(el) el.classList.toggle('visible');}
+
+/* ── AUTOSAVE (localStorage) ── */
+var autoSaveTimer;
+function autoSave(){
+  clearTimeout(autoSaveTimer);
+  autoSaveTimer=setTimeout(function(){
+    if(!currentTemplate) return;
+    try{
+      var state={template:currentTemplate,lang:lang,data:formData};
+      localStorage.setItem('fajr_autosave',JSON.stringify(state));
+    }catch(e){}
+  },800);
+}
+
+function loadAutoSave(){
+  try{
+    var raw=localStorage.getItem('fajr_autosave');
+    if(!raw) return;
+    var state=JSON.parse(raw);
+    if(state.data) formData=state.data;
+    if(state.lang) lang=state.lang;
+    if(state.template){
+      setTimeout(function(){selectTemplate(state.template);},200);
+    }
+  }catch(e){}
+}
+
+/* ── DRAFTS ── */
+function openSaveModal(){
+  if(!currentTemplate){showToast(lang==='ar'?'اختر قالباً أولاً':'Please select a template first');return;}
+  document.getElementById('saveModal').classList.add('open');
+  document.getElementById('draftNameInput').focus();
+}
+function closeModal(){document.getElementById('saveModal').classList.remove('open');}
+
+function saveDraft(){
+  var name=document.getElementById('draftNameInput').value.trim();
+  if(!name){showToast(lang==='ar'?'أدخل اسماً للمسودة':'Please enter a draft name');return;}
+  try{
+    var drafts=getDrafts();
+    var id='draft_'+Date.now();
+    drafts[id]={name:name,template:currentTemplate,lang:lang,data:JSON.parse(JSON.stringify(formData)),date:new Date().toLocaleDateString('ar-SA')};
+    localStorage.setItem('fajr_drafts',JSON.stringify(drafts));
+    closeModal();
+    document.getElementById('draftNameInput').value='';
+    renderDraftsList();
+    showToast(T[lang].toastSaved);
+  }catch(e){showToast(lang==='ar'?'خطأ في الحفظ':'Save error');}
+}
+
+function getDrafts(){
+  try{return JSON.parse(localStorage.getItem('fajr_drafts')||'{}');}catch(e){return{};}
+}
+
+function loadDraft(id){
+  var drafts=getDrafts();
+  var d=drafts[id];
+  if(!d) return;
+  formData=JSON.parse(JSON.stringify(d.data));
+  if(d.lang) lang=d.lang;
+  if(d.template) selectTemplate(d.template);
+  showToast(T[lang].toastLoaded);
+}
+
+function deleteDraft(id,e){
+  e.stopPropagation();
+  var drafts=getDrafts();
+  delete drafts[id];
+  localStorage.setItem('fajr_drafts',JSON.stringify(drafts));
+  renderDraftsList();
+  showToast(T[lang].toastDeleted);
+}
+
+function renderDraftsList(){
+  var list=document.getElementById('draftsList');
+  if(!list) return;
+  var drafts=getDrafts();
+  var keys=Object.keys(drafts);
+  if(keys.length===0){list.innerHTML='<div class="no-drafts">'+T[lang].noDrafts+'</div>';return;}
+  list.innerHTML='';
+  keys.reverse().forEach(function(id){
+    var d=drafts[id];
+    var item=document.createElement('div');item.className='draft-item';
+    item.innerHTML='<div><div class="draft-name">'+escHtml(d.name)+'</div><div class="draft-date">'+escHtml(d.date||'')+'</div></div>'
+      +'<button class="draft-del" title="حذف">✕</button>';
+    item.querySelector('.draft-del').addEventListener('click',function(e){deleteDraft(id,e);});
+    item.addEventListener('click',function(){loadDraft(id);});
+    list.appendChild(item);
+  });
+}
+
+/* ── EXPORT JSON ── */
+function exportJSON(){
+  if(!currentTemplate){showToast(lang==='ar'?'اختر قالباً أولاً':'Please select a template first');return;}
+  var state={template:currentTemplate,lang:lang,data:formData,exportDate:new Date().toISOString()};
+  var blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;a.download='fajr_draft.json';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  showToast(T[lang].toastSaved);
+}
+
+function importJSON(event){
+  var file=event.target.files[0];
+  if(!file) return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      var state=JSON.parse(e.target.result);
+      if(state.data) formData=state.data;
+      if(state.lang) lang=state.lang;
+      if(state.template) selectTemplate(state.template);
+      showToast(T[lang].toastLoaded);
+    }catch(err){showToast(lang==='ar'?'خطأ في تحميل الملف':'Error loading file');}
+  };
+  reader.readAsText(file);
+  event.target.value='';
+}
+
+/* ── EXPORT WORD / PDF ── */
+function buildDocContent(){
+  if(!currentTemplate) return null;
+  var tpl=TEMPLATES[currentTemplate],info=tpl[lang]||tpl['ar'],data=formData[currentTemplate]||{};
+  var style=document.getElementById('styleSelect').value;
+  var uniName=lang==='ar'?'جامعة الباحث العلمية':'Academic Research University';
+  var dir=lang==='ar'?'rtl':'ltr',align=lang==='ar'?'right':'left';
+  var sections=[];
+  tpl.fields.forEach(function(f){
+    var finfo=f[lang]||f['ar'];var val='';
+    if(f.type==='questions'){var list=data[f.id+'_list']||[];val=list.filter(function(q){return q&&q.trim();}).map(function(q,i){return(i+1)+'. '+q;}).join('\n');}
+    else{val=data[f.id]||'';}
+    sections.push({label:finfo.label,value:val});
+  });
+  return{title:info.title,uniName:uniName,style:style,dir:dir,align:align,sections:sections};
+}
+
+function exportDoc(){
+  var d=buildDocContent();
+  if(!d){showToast(lang==='ar'?'اختر قالباً أولاً':'Select a template first');return;}
+  var rowsHTML=d.sections.map(function(s){
+    var val=s.value.trim()||(lang==='ar'?'لم يُدخَل بعد':'Not yet entered');
+    var valHTML=val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+    return '<h2 style="font-size:13pt;color:#0f0e0d;border-bottom:1px solid #ccc;padding-bottom:4pt;margin-top:18pt;">'+s.label.replace(/&/g,'&amp;')+'</h2>'
+      +'<p style="font-size:12pt;line-height:1.8;color:#333;margin-top:6pt;">'+valHTML+'</p>';
+  }).join('');
+  var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{font-family:Times New Roman,serif;direction:'+d.dir+';text-align:'+d.align+';margin:2.5cm;line-height:1.8}.header{text-align:center;border-bottom:2pt solid #000;padding-bottom:12pt;margin-bottom:24pt}</style></head><body>'
+    +'<div class="header"><div style="font-size:11pt;font-weight:bold;">'+d.uniName+'</div>'
+    +'<h1 style="font-size:16pt;">'+d.title+'</h1>'
+    +'<div style="font-size:9pt;color:#888;">'+d.style+' Format | '+new Date().getFullYear()+'</div></div>'
+    +rowsHTML+'</body></html>';
+  var blob=new Blob(['\ufeff'+html],{type:'application/msword;charset=utf-8'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;a.download=(currentTemplate||'research')+'_fajr.doc';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  showToast(T[lang].toastWord);
+}
+
+function exportPDF(){
+  var d=buildDocContent();
+  if(!d){showToast(lang==='ar'?'اختر قالباً أولاً':'Select a template first');return;}
+  var rowsHTML=d.sections.map(function(s){
+    var val=s.value.trim()||(lang==='ar'?'لم يُدخَل بعد':'Not yet entered');
+    var valHTML=val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+    return '<div style="margin-bottom:18pt;"><div style="font-size:11pt;font-weight:bold;border-bottom:1px solid #ccc;padding-bottom:4pt;margin-bottom:8pt;">'+s.label.replace(/&/g,'&amp;')+'</div>'
+      +'<div style="font-size:11pt;line-height:1.9;color:#333;">'+valHTML+'</div></div>';
+  }).join('');
+  var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+d.title+'</title></head>'
+    +'<body style="font-family:Georgia,serif;direction:'+d.dir+';text-align:'+d.align+';margin:0;padding:2cm;">'
+    +'<div style="text-align:center;border-bottom:2pt solid #000;padding-bottom:14pt;margin-bottom:28pt;">'
+    +'<div style="font-weight:bold;">'+d.uniName+'</div>'
+    +'<div style="font-size:15pt;font-weight:bold;margin-top:6pt;">'+d.title+'</div>'
+    +'<div style="font-size:9pt;color:#888;margin-top:4pt;">'+d.style+' | '+new Date().getFullYear()+'</div></div>'
+    +rowsHTML+'<script>window.onload=function(){window.print();}<\/script></body></html>';
+  var w=window.open('','_blank');
+  if(w){w.document.write(html);w.document.close();showToast(T[lang].toastPdf);}
+  else{showToast(lang==='ar'?'السماح بالنوافذ المنبثقة':'Allow pop-ups');}
+}
+
+/* ── UTILS ── */
+function showToast(msg){
+  var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},3000);
+}
+function escHtml(s){if(!s) return '';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function escAttr(s){if(!s) return '';return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* ── MODAL KEYBOARD ── */
+document.getElementById('saveModal').addEventListener('click',function(e){if(e.target===this) closeModal();});
+document.getElementById('draftNameInput').addEventListener('keydown',function(e){if(e.key==='Enter') saveDraft();});
+
+/* ── INIT ── */
+renderDraftsList();
+loadAutoSave();
+if(!currentTemplate) setTimeout(function(){selectTemplate('proposal');},100);
+</script>
 </body>
 </html>
