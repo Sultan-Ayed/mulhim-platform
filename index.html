@@ -827,7 +827,7 @@ function exportDoc(){
       +'<p style="font-size:12pt;line-height:1.8;color:#333;margin-top:6pt;">'+valHTML+'</p>';
   }).join('');
   var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><style>body{font-family:Times New Roman,serif;direction:'+d.dir+';text-align:'+d.align+';margin:2.5cm;line-height:1.8}.header{text-align:center;border-bottom:2pt solid #000;padding-bottom:12pt;margin-bottom:24pt}</style></head><body>'
-    +'<div class="header">
+    +'<div class="header"><div style="font-size:11pt;font-weight:bold;">'+d.uniName+'</div>'
     +'<h1 style="font-size:16pt;">'+d.title+'</h1>'
     +'<div style="font-size:9pt;color:#888;">'+d.style+' Format | '+new Date().getFullYear()+'</div></div>'
     +rowsHTML+'</body></html>';
@@ -850,7 +850,7 @@ function exportPDF(){
   var html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>'+d.title+'</title></head>'
     +'<body style="font-family:Georgia,serif;direction:'+d.dir+';text-align:'+d.align+';margin:0;padding:2cm;">'
     +'<div style="text-align:center;border-bottom:2pt solid #000;padding-bottom:14pt;margin-bottom:28pt;">'
-    
+    +'<div style="font-weight:bold;">'+d.uniName+'</div>'
     +'<div style="font-size:15pt;font-weight:bold;margin-top:6pt;">'+d.title+'</div>'
     +'<div style="font-size:9pt;color:#888;margin-top:4pt;">'+d.style+' | '+new Date().getFullYear()+'</div></div>'
     +rowsHTML+'<script>window.onload=function(){window.print();}<\/script></body></html>';
