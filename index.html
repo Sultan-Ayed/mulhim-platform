@@ -4,652 +4,112 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>مُلهِم البحثي | Smart Academic Writing</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Playfair+Display:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #0f0e0d;
-    --paper: #f5f0e8;
-    --cream: #ede8de;
-    --gold: #c9a84c;
-    --gold-light: #e8cf8a;
-    --rust: #b5421a;
-    --teal: #1a6b6b;
-    --teal-light: #2a9d8f;
-    --muted: #7a7268;
-    --border: #d4cebf;
-    --white: #fdfcfa;
-    --shadow: rgba(15,14,13,0.12);
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Tajawal', sans-serif;
-    background: var(--paper);
-    color: var(--ink);
-    min-height: 100vh;
-    direction: rtl;
-  }
-
-  body.en { direction: ltr; font-family: 'Playfair Display', 'Tajawal', sans-serif; }
-
-  /* ── HEADER ── */
-  header {
-    background: var(--ink);
-    padding: 0 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 3px solid var(--gold);
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .logo-icon {
-    width: 36px; height: 36px;
-    background: var(--gold);
-    border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem;
-    flex-shrink: 0;
-  }
-
-  .logo-text {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--white);
-    letter-spacing: -0.02em;
-  }
-
-  .logo-sub {
-    font-size: 0.7rem;
-    color: var(--gold-light);
-    font-weight: 300;
-    font-family: 'IBM Plex Mono', monospace;
-  }
-
-  .header-controls {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .btn-lang {
-    background: transparent;
-    border: 1.5px solid var(--muted);
-    color: var(--white);
-    padding: 0.35rem 1rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-family: 'Tajawal', sans-serif;
-  }
-  .btn-lang:hover, .btn-lang.active {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-
-  .style-select {
-    background: transparent;
-    border: 1.5px solid var(--muted);
-    color: var(--white);
-    padding: 0.35rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    outline: none;
-    font-family: 'Tajawal', monospace;
-  }
-  .style-select option { background: #1a1916; color: var(--white); }
-
-  /* ── MAIN LAYOUT ── */
-  .app-wrap {
-    display: grid;
-    grid-template-columns: 280px 1fr 340px;
-    min-height: calc(100vh - 64px);
-  }
-
-  /* ── SIDEBAR ── */
-  .sidebar {
-    background: var(--ink);
-    padding: 2rem 1.25rem;
-    border-left: 1px solid #2a2925;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  body.en .sidebar { border-left: none; border-right: 1px solid #2a2925; }
-
-  .sidebar-label {
-    font-size: 0.65rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-family: 'IBM Plex Mono', monospace;
-    margin-bottom: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  body.en .sidebar-label { padding-right: 0; padding-left: 0.5rem; }
-
-  .template-btn {
-    background: transparent;
-    border: 1px solid #2a2925;
-    color: #9a9082;
-    padding: 0.85rem 1rem;
-    border-radius: 8px;
-    text-align: right;
-    cursor: pointer;
-    transition: all 0.22s;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 0.88rem;
-    line-height: 1.5;
-    position: relative;
-  }
-  body.en .template-btn { text-align: left; }
-
-  .template-btn .t-icon { font-size: 1.1rem; display: block; margin-bottom: 0.25rem; }
-  .template-btn .t-name { display: block; font-weight: 700; color: #ccc5b9; font-size: 0.9rem; }
-  .template-btn .t-desc { display: block; font-size: 0.72rem; color: var(--muted); margin-top: 0.15rem; }
-
-  .template-btn:hover {
-    border-color: var(--gold);
-    background: rgba(201,168,76,0.07);
-    color: var(--gold-light);
-  }
-  .template-btn.active {
-    border-color: var(--gold);
-    background: rgba(201,168,76,0.12);
-  }
-  .template-btn.active .t-name { color: var(--gold); }
-  .template-btn.active::before {
-    content: '';
-    position: absolute;
-    right: 0; top: 50%; transform: translateY(-50%);
-    width: 3px; height: 60%;
-    background: var(--gold);
-    border-radius: 3px 0 0 3px;
-  }
-  body.en .template-btn.active::before {
-    right: auto; left: 0;
-    border-radius: 0 3px 3px 0;
-  }
-
-  .sidebar-divider {
-    border: none;
-    border-top: 1px solid #2a2925;
-    margin: 1rem 0;
-  }
-
-  .progress-wrap { padding: 0.5rem; }
-  .progress-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.7rem;
-    color: var(--muted);
-    margin-bottom: 0.5rem;
-    font-family: 'IBM Plex Mono', monospace;
-  }
-  .progress-bar {
-    height: 4px;
-    background: #2a2925;
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--teal-light), var(--gold));
-    border-radius: 2px;
-    transition: width 0.5s ease;
-    width: 0%;
-  }
-
-  /* ── FORM AREA ── */
-  .form-area {
-    padding: 2.5rem 2rem;
-    overflow-y: auto;
-    background: var(--paper);
-    background-image:
-      radial-gradient(circle at 80% 10%, rgba(201,168,76,0.05) 0%, transparent 50%),
-      radial-gradient(circle at 20% 80%, rgba(26,107,107,0.05) 0%, transparent 50%);
-  }
-
-  .form-header {
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .form-title-en {
-    font-size: 0.7rem;
-    color: var(--gold);
-    font-family: 'IBM Plex Mono', monospace;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 0.35rem;
-  }
-
-  .form-title {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--ink);
-    line-height: 1.2;
-  }
-
-  .form-subtitle {
-    color: var(--muted);
-    font-size: 0.88rem;
-    margin-top: 0.5rem;
-    font-weight: 300;
-  }
-
-  /* ── FIELD GROUP ── */
-  .field-section {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    margin-bottom: 1.25rem;
-    overflow: hidden;
-    box-shadow: 0 2px 8px var(--shadow);
-    transition: box-shadow 0.2s;
-  }
-  .field-section:focus-within {
-    box-shadow: 0 4px 20px rgba(201,168,76,0.15), 0 2px 8px var(--shadow);
-    border-color: var(--gold-light);
-  }
-
-  .field-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.9rem 1.25rem;
-    background: var(--cream);
-    border-bottom: 1px solid var(--border);
-    gap: 1rem;
-  }
-
-  .field-label-wrap { display: flex; flex-direction: column; gap: 0.15rem; }
-  .field-label {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--ink);
-  }
-  .field-label-en {
-    font-size: 0.68rem;
-    color: var(--muted);
-    font-family: 'IBM Plex Mono', monospace;
-    letter-spacing: 0.05em;
-  }
-
-  .field-hint-btn {
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    width: 26px; height: 26px;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    font-size: 0.75rem;
-    color: var(--muted);
-    transition: all 0.2s;
-    flex-shrink: 0;
-  }
-  .field-hint-btn:hover {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: var(--white);
-  }
-
-  .field-body { padding: 1.25rem; }
-
-  .field-hint-box {
-    background: linear-gradient(135deg, #fffdf5, #fdf9ee);
-    border: 1px solid var(--gold-light);
-    border-radius: 8px;
-    padding: 0.85rem 1rem;
-    margin-bottom: 1rem;
-    font-size: 0.8rem;
-    color: #7a6830;
-    line-height: 1.7;
-    display: none;
-    position: relative;
-  }
-  .field-hint-box.visible { display: block; animation: slideDown 0.2s ease; }
-  .field-hint-box::before {
-    content: '💡';
-    margin-left: 0.4rem;
-  }
-  body.en .field-hint-box::before { margin-left: 0; margin-right: 0.4rem; }
-
-  @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-6px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  textarea, input[type="text"], select.field-select {
-    width: 100%;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 0.92rem;
-    color: var(--ink);
-    background: var(--paper);
-    outline: none;
-    resize: vertical;
-    transition: border-color 0.2s;
-    direction: inherit;
-  }
-  textarea:focus, input[type="text"]:focus, select.field-select:focus {
-    border-color: var(--teal-light);
-    background: var(--white);
-  }
-  textarea::placeholder, input::placeholder { color: #b0a99a; }
-
-  .questions-list { display: flex; flex-direction: column; gap: 0.6rem; }
-  .question-item {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-  .question-num {
-    width: 26px; height: 26px;
-    background: var(--ink);
-    color: var(--gold);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.7rem;
-    font-weight: 700;
-    flex-shrink: 0;
-    font-family: 'IBM Plex Mono', monospace;
-  }
-  .question-item input { margin: 0; }
-
-  .add-q-btn {
-    background: transparent;
-    border: 1.5px dashed var(--border);
-    border-radius: 8px;
-    padding: 0.5rem;
-    width: 100%;
-    cursor: pointer;
-    color: var(--muted);
-    font-family: 'Tajawal', sans-serif;
-    font-size: 0.82rem;
-    margin-top: 0.5rem;
-    transition: all 0.2s;
-  }
-  .add-q-btn:hover { border-color: var(--teal-light); color: var(--teal); }
-
-  /* ── EXPORT BTN ── */
-  .export-wrap {
-    margin-top: 2rem;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .btn-export {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1.75rem;
-    border-radius: 8px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.22s;
-    border: none;
-  }
-
-  .btn-primary {
-    background: var(--ink);
-    color: var(--gold);
-    box-shadow: 0 4px 16px rgba(15,14,13,0.3);
-  }
-  .btn-primary:hover {
-    background: #1a1916;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(15,14,13,0.4);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--ink);
-    border: 1.5px solid var(--border);
-  }
-  .btn-secondary:hover { border-color: var(--ink); }
-
-  .autosave-indicator {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.75rem;
-    color: var(--teal-light);
-    font-family: 'IBM Plex Mono', monospace;
-    margin-top: 0.75rem;
-  }
-  .save-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--teal-light);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  /* ── PREVIEW ── */
-  .preview-panel {
-    background: var(--white);
-    border-right: 1px solid var(--border);
-    border-left: none;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    box-shadow: -4px 0 20px var(--shadow);
-  }
-  body.en .preview-panel {
-    border-right: none;
-    border-left: 1px solid var(--border);
-    box-shadow: 4px 0 20px var(--shadow);
-  }
-
-  .preview-header {
-    padding: 1rem 1.25rem;
-    border-bottom: 1px solid var(--border);
-    background: var(--cream);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .preview-title {
-    font-size: 0.7rem;
-    font-family: 'IBM Plex Mono', monospace;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .preview-badge {
-    background: var(--teal);
-    color: var(--white);
-    font-size: 0.6rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: 3px;
-    font-family: 'IBM Plex Mono', monospace;
-    letter-spacing: 0.1em;
-  }
-
-  .preview-doc {
-    flex: 1;
-    overflow-y: auto;
-    padding: 2rem 1.5rem;
-    font-family: 'Georgia', serif;
-    font-size: 0.82rem;
-    line-height: 1.9;
-    color: #2a2520;
-  }
-
-  .doc-uni-header {
-    text-align: center;
-    border-bottom: 2px solid var(--ink);
-    padding-bottom: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  .doc-uni-name {
-    font-size: 0.85rem;
-    font-weight: bold;
-    letter-spacing: 0.05em;
-  }
-  .doc-doc-type {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-top: 0.25rem;
-  }
-  .doc-style-tag {
-    font-size: 0.65rem;
-    color: var(--muted);
-    font-family: 'IBM Plex Mono', monospace;
-    margin-top: 0.25rem;
-  }
-
-  .doc-section {
-    margin-bottom: 1.25rem;
-    animation: fadeIn 0.4s ease;
-  }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-  .doc-section-title {
-    font-size: 0.78rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0.3rem;
-    margin-bottom: 0.6rem;
-    color: var(--ink);
-  }
-
-  .doc-section-body {
-    font-size: 0.8rem;
-    color: #4a4540;
-    line-height: 1.8;
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
-
-  .doc-placeholder {
-    color: #c0bab0;
-    font-style: italic;
-    font-size: 0.78rem;
-  }
-
-  /* ── WELCOME ── */
-  .welcome-screen {
-    grid-column: 2 / 4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem;
-    text-align: center;
-  }
-
-  .welcome-inner { max-width: 480px; }
-
-  .welcome-icon {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
-    display: block;
-  }
-
-  .welcome-title {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--ink);
-    line-height: 1.2;
-    margin-bottom: 0.75rem;
-  }
-
-  .welcome-sub {
-    color: var(--muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 2rem;
-  }
-
-  .welcome-arrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    color: var(--gold);
-    font-weight: 600;
-    animation: bounceLeft 1.5s infinite;
-  }
-
-  @keyframes bounceLeft {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(-8px); }
-  }
-  body.en .welcome-arrow { animation-name: bounceRight; }
-  @keyframes bounceRight {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(8px); }
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 1100px) {
-    .app-wrap { grid-template-columns: 240px 1fr; }
-    .preview-panel { display: none; }
-  }
-  @media (max-width: 700px) {
-    .app-wrap { grid-template-columns: 1fr; }
-    .sidebar { display: none; }
-  }
-
-  /* ── TOAST ── */
-  .toast {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: var(--ink);
-    color: var(--gold);
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-size: 0.88rem;
-    font-family: 'Tajawal', sans-serif;
-    border: 1px solid var(--gold);
-    transition: transform 0.35s ease;
-    z-index: 999;
-  }
-  .toast.show { transform: translateX(-50%) translateY(0); }
+:root{--ink:#0f0e0d;--paper:#f5f0e8;--cream:#ede8de;--gold:#c9a84c;--gold-light:#e8cf8a;--teal:#1a6b6b;--teal-light:#2a9d8f;--muted:#7a7268;--border:#d4cebf;--white:#fdfcfa;--shadow:rgba(15,14,13,0.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Tajawal',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;direction:rtl}
+body.en{direction:ltr}
+header{background:var(--ink);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--gold)}
+.logo{display:flex;align-items:center;gap:.75rem}
+.logo-icon{width:36px;height:36px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.logo-text{font-size:1.2rem;font-weight:800;color:var(--white)}
+.logo-sub{font-size:.65rem;color:var(--gold-light);font-family:'IBM Plex Mono',monospace}
+.header-controls{display:flex;align-items:center;gap:.75rem}
+.btn-lang{background:transparent;border:1.5px solid var(--muted);color:var(--white);padding:.35rem 1rem;border-radius:4px;font-size:.8rem;cursor:pointer;transition:all .2s;font-family:'Tajawal',sans-serif}
+.btn-lang:hover,.btn-lang.active{border-color:var(--gold);color:var(--gold)}
+.style-select{background:transparent;border:1.5px solid var(--muted);color:var(--white);padding:.35rem .75rem;border-radius:4px;font-size:.8rem;cursor:pointer;outline:none;font-family:'Tajawal',monospace}
+.style-select option{background:#1a1916;color:var(--white)}
+.app-wrap{display:grid;grid-template-columns:270px 1fr 330px;min-height:calc(100vh - 64px)}
+.sidebar{background:var(--ink);padding:1.75rem 1.25rem;display:flex;flex-direction:column;gap:.5rem}
+.sidebar-label{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-family:'IBM Plex Mono',monospace;margin-bottom:.5rem;padding-right:.5rem}
+body.en .sidebar-label{padding-right:0;padding-left:.5rem}
+.template-btn{background:transparent;border:1px solid #2a2925;color:#9a9082;padding:.85rem 1rem;border-radius:8px;text-align:right;cursor:pointer;transition:all .22s;font-family:'Tajawal',sans-serif;font-size:.88rem;line-height:1.5;position:relative;width:100%}
+body.en .template-btn{text-align:left}
+.template-btn .t-icon{font-size:1rem;display:block;margin-bottom:.2rem}
+.template-btn .t-name{display:block;font-weight:700;color:#ccc5b9;font-size:.9rem}
+.template-btn .t-desc{display:block;font-size:.7rem;color:var(--muted);margin-top:.1rem}
+.template-btn:hover{border-color:var(--gold);background:rgba(201,168,76,.07)}
+.template-btn.active{border-color:var(--gold);background:rgba(201,168,76,.12)}
+.template-btn.active .t-name{color:var(--gold)}
+.template-btn.active::before{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:3px;height:60%;background:var(--gold);border-radius:3px 0 0 3px}
+body.en .template-btn.active::before{right:auto;left:0;border-radius:0 3px 3px 0}
+.sidebar-divider{border:none;border-top:1px solid #2a2925;margin:1rem 0}
+.progress-wrap{padding:.5rem}
+.progress-label{display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-bottom:.5rem;font-family:'IBM Plex Mono',monospace}
+.progress-bar{height:4px;background:#2a2925;border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--teal-light),var(--gold));border-radius:2px;transition:width .5s ease;width:0%}
+.form-area{padding:2.5rem 2rem;overflow-y:auto;background:var(--paper)}
+.form-header{margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.form-title-en{font-size:.68rem;color:var(--gold);font-family:'IBM Plex Mono',monospace;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.35rem}
+.form-title{font-size:1.7rem;font-weight:800;color:var(--ink);line-height:1.2}
+.form-subtitle{color:var(--muted);font-size:.88rem;margin-top:.5rem;font-weight:300}
+.field-section{background:var(--white);border:1px solid var(--border);border-radius:12px;margin-bottom:1.25rem;overflow:hidden;box-shadow:0 2px 8px var(--shadow);transition:box-shadow .2s}
+.field-section:focus-within{box-shadow:0 4px 20px rgba(201,168,76,.15);border-color:var(--gold-light)}
+.field-header{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.25rem;background:var(--cream);border-bottom:1px solid var(--border);gap:1rem}
+.field-label-wrap{display:flex;flex-direction:column;gap:.15rem}
+.field-label{font-size:.95rem;font-weight:700;color:var(--ink)}
+.field-label-en{font-size:.68rem;color:var(--muted);font-family:'IBM Plex Mono',monospace}
+.field-hint-btn{background:transparent;border:1px solid var(--border);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.75rem;color:var(--muted);transition:all .2s;flex-shrink:0}
+.field-hint-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--white)}
+.field-body{padding:1.25rem}
+.field-hint-box{background:linear-gradient(135deg,#fffdf5,#fdf9ee);border:1px solid var(--gold-light);border-radius:8px;padding:.85rem 1rem;margin-bottom:1rem;font-size:.8rem;color:#7a6830;line-height:1.7;display:none}
+.field-hint-box.visible{display:block}
+textarea,input[type=text],.field-select{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:.75rem 1rem;font-family:'Tajawal',sans-serif;font-size:.92rem;color:var(--ink);background:var(--paper);outline:none;resize:vertical;transition:border-color .2s;direction:inherit}
+textarea:focus,input[type=text]:focus,.field-select:focus{border-color:var(--teal-light);background:var(--white)}
+textarea::placeholder,input::placeholder{color:#b0a99a}
+.questions-list{display:flex;flex-direction:column;gap:.6rem}
+.question-item{display:flex;align-items:center;gap:.6rem}
+.question-num{width:26px;height:26px;background:var(--ink);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;font-family:'IBM Plex Mono',monospace}
+.question-item input{margin:0}
+.add-q-btn{background:transparent;border:1.5px dashed var(--border);border-radius:8px;padding:.5rem;width:100%;cursor:pointer;color:var(--muted);font-family:'Tajawal',sans-serif;font-size:.82rem;margin-top:.5rem;transition:all .2s}
+.add-q-btn:hover{border-color:var(--teal-light);color:var(--teal)}
+.export-wrap{margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap}
+.btn-export{display:flex;align-items:center;gap:.5rem;padding:.85rem 1.75rem;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .22s;border:none}
+.btn-primary{background:var(--ink);color:var(--gold);box-shadow:0 4px 16px rgba(15,14,13,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(15,14,13,.4)}
+.btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--border)}
+.btn-secondary:hover{border-color:var(--ink)}
+.autosave-indicator{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--teal-light);font-family:'IBM Plex Mono',monospace;margin-top:.75rem}
+.save-dot{width:7px;height:7px;border-radius:50%;background:var(--teal-light);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.preview-panel{background:var(--white);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+body.en .preview-panel{border-right:none;border-left:1px solid var(--border)}
+.preview-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);background:var(--cream);display:flex;align-items:center;justify-content:space-between}
+.preview-title{font-size:.7rem;font-family:'IBM Plex Mono',monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.preview-badge{background:var(--teal);color:var(--white);font-size:.6rem;padding:.2rem .5rem;border-radius:3px;font-family:'IBM Plex Mono',monospace}
+.preview-doc{flex:1;overflow-y:auto;padding:2rem 1.5rem;font-family:'Georgia',serif;font-size:.82rem;line-height:1.9;color:#2a2520}
+.doc-uni-header{text-align:center;border-bottom:2px solid var(--ink);padding-bottom:1rem;margin-bottom:1.5rem}
+.doc-uni-name{font-size:.85rem;font-weight:bold}
+.doc-doc-type{font-size:1rem;font-weight:bold;margin-top:.25rem}
+.doc-style-tag{font-size:.65rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:.25rem}
+.doc-section{margin-bottom:1.25rem}
+.doc-section-title{font-size:.78rem;font-weight:bold;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--border);padding-bottom:.3rem;margin-bottom:.6rem;color:var(--ink)}
+.doc-section-body{font-size:.8rem;color:#4a4540;line-height:1.8;white-space:pre-wrap;word-break:break-word}
+.doc-placeholder{color:#c0bab0;font-style:italic;font-size:.78rem}
+.welcome-screen{grid-column:2/4;display:flex;align-items:center;justify-content:center;padding:3rem;text-align:center}
+.welcome-inner{max-width:480px}
+.welcome-icon{font-size:4rem;margin-bottom:1.5rem;display:block}
+.welcome-title{font-size:2rem;font-weight:800;color:var(--ink);line-height:1.2;margin-bottom:.75rem}
+.welcome-sub{color:var(--muted);font-size:.95rem;line-height:1.7;margin-bottom:2rem}
+.welcome-arrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--gold);font-weight:600}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--gold);padding:.75rem 1.5rem;border-radius:8px;font-size:.88rem;font-family:'Tajawal',sans-serif;border:1px solid var(--gold);transition:transform .35s ease;z-index:999}
+.toast.show{transform:translateX(-50%) translateY(0)}
+@media(max-width:1100px){.app-wrap{grid-template-columns:240px 1fr}.preview-panel{display:none}}
+@media(max-width:700px){.app-wrap{grid-template-columns:1fr}.sidebar{display:none}}
 </style>
 </head>
 <body>
-
 <header>
   <div class="logo">
     <div class="logo-icon">✦</div>
     <div>
       <div class="logo-text" id="logoText">مُلهِم البحثي</div>
-      <div class="logo-sub" id="logoSub">SMART ACADEMIC PLATFORM</div>
+      <div class="logo-sub">SMART ACADEMIC PLATFORM</div>
     </div>
   </div>
   <div class="header-controls">
-    <select class="style-select" id="styleSelect">
+    <select class="style-select" id="styleSelect" onchange="onStyleChange()">
       <option value="APA">APA 7th</option>
       <option value="MLA">MLA 9th</option>
       <option value="IEEE">IEEE</option>
@@ -661,49 +121,38 @@
 </header>
 
 <div class="app-wrap">
-
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-label" id="sideLabel">اختر نوع القالب</div>
-
     <button class="template-btn" onclick="selectTemplate('proposal')" id="tpl-proposal">
       <span class="t-icon">📋</span>
       <span class="t-name" id="t1n">المقترح البحثي</span>
       <span class="t-desc" id="t1d">Research Proposal</span>
     </button>
-
     <button class="template-btn" onclick="selectTemplate('literature')" id="tpl-literature">
       <span class="t-icon">📚</span>
       <span class="t-name" id="t2n">مراجعة الأدبيات</span>
       <span class="t-desc" id="t2d">Literature Review</span>
     </button>
-
     <button class="template-btn" onclick="selectTemplate('thesis')" id="tpl-thesis">
       <span class="t-icon">🎓</span>
       <span class="t-name" id="t3n">الأطروحة الأكاديمية</span>
       <span class="t-desc" id="t3d">Thesis / Dissertation</span>
     </button>
-
     <button class="template-btn" onclick="selectTemplate('paper')" id="tpl-paper">
       <span class="t-icon">📄</span>
       <span class="t-name" id="t4n">الورقة البحثية</span>
       <span class="t-desc" id="t4d">Research Paper</span>
     </button>
-
     <hr class="sidebar-divider">
-
     <div class="progress-wrap">
       <div class="progress-label">
         <span id="progressLabel">اكتمال النموذج</span>
         <span id="progressPct">0%</span>
       </div>
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
     </div>
   </aside>
 
-  <!-- WELCOME / FORM -->
   <div id="mainContent">
     <div class="welcome-screen" id="welcomeScreen">
       <div class="welcome-inner">
@@ -713,24 +162,19 @@
         <div class="welcome-arrow" id="welcomeArrow">← اختر القالب من القائمة الجانبية</div>
       </div>
     </div>
-
     <div class="form-area" id="formArea" style="display:none">
       <div class="form-header">
         <div class="form-title-en" id="formTitleEn">RESEARCH PROPOSAL TEMPLATE</div>
         <h2 class="form-title" id="formTitle">نموذج المقترح البحثي</h2>
         <p class="form-subtitle" id="formSubtitle">أكمل الخانات التالية وستظهر معاينة بحثك في الجانب الأيسر</p>
       </div>
-
       <div id="fieldsContainer"></div>
-
       <div class="export-wrap">
         <button class="btn-export btn-primary" onclick="exportDoc()">
-          <span>⬇</span>
-          <span id="exportBtn">تصدير Word</span>
+          <span>⬇</span><span id="exportBtn">تصدير Word</span>
         </button>
         <button class="btn-export btn-secondary" onclick="exportPDF()">
-          <span>📄</span>
-          <span id="exportPdfBtn">تصدير PDF</span>
+          <span>📄</span><span id="exportPdfBtn">تصدير PDF</span>
         </button>
       </div>
       <div class="autosave-indicator">
@@ -740,32 +184,27 @@
     </div>
   </div>
 
-  <!-- PREVIEW -->
   <aside class="preview-panel">
     <div class="preview-header">
       <span class="preview-title" id="previewLabel">معاينة مباشرة</span>
       <span class="preview-badge" id="styleTag">APA 7th</span>
     </div>
     <div class="preview-doc" id="previewDoc">
-      <div style="text-align:center; color: #c0bab0; padding: 4rem 1rem; font-style:italic; font-size:0.82rem;" id="previewEmpty">
+      <div id="previewEmpty" style="text-align:center;color:#c0bab0;padding:4rem 1rem;font-style:italic;font-size:.82rem">
         اختر قالباً لترى المعاينة هنا...
       </div>
     </div>
   </aside>
-
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ─── STATE ───────────────────────────────────────────────────────────────────
-let lang = 'ar';
-let currentTemplate = null;
-let formData = {};
-let questionCounts = {};
+var lang = 'ar';
+var currentTemplate = null;
+var formData = {};
 
-// ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
-const T = {
+var T = {
   ar: {
     sideLabel: 'اختر نوع القالب',
     welcomeTitle: 'ابدأ رحلتك البحثية',
@@ -777,11 +216,11 @@ const T = {
     exportBtn: 'تصدير Word',
     exportPdfBtn: 'تصدير PDF',
     addQ: '+ أضف سؤالاً',
-    hint: 'نصيحة',
     formSubtitle: 'أكمل الخانات التالية وستظهر معاينة بحثك في الجانب الأيسر',
     previewEmpty: 'اختر قالباً لترى المعاينة هنا...',
     toastWord: '✔ تم إنشاء ملف Word بنجاح',
     toastPdf: '✔ تم إنشاء ملف PDF بنجاح',
+    notEntered: '[ لم يُدخَل بعد ]'
   },
   en: {
     sideLabel: 'Choose Template Type',
@@ -794,64 +233,51 @@ const T = {
     exportBtn: 'Export Word',
     exportPdfBtn: 'Export PDF',
     addQ: '+ Add Question',
-    hint: 'Tip',
     formSubtitle: 'Complete the fields below and your research preview will appear on the right.',
     previewEmpty: 'Select a template to see the preview here...',
     toastWord: '✔ Word file created successfully',
     toastPdf: '✔ PDF file created successfully',
+    notEntered: '[ Not yet entered ]'
   }
 };
 
-// ─── TEMPLATES CONFIG ─────────────────────────────────────────────────────────
-const TEMPLATES = {
+var TEMPLATES = {
   proposal: {
     ar: { title: 'المقترح البحثي', titleEn: 'RESEARCH PROPOSAL TEMPLATE' },
     en: { title: 'Research Proposal', titleEn: 'RESEARCH PROPOSAL TEMPLATE' },
     fields: [
-      {
-        id: 'title',
-        ar: { label: 'عنوان البحث', hint: 'صغ عنواناً واضحاً ومحدداً يعكس مشكلة الدراسة ويتضمن المتغيرات الرئيسية. يُفضّل ألا يتجاوز 15 كلمة.' },
+      { id: 'rtitle', type: 'text',
+        ar: { label: 'عنوان البحث', hint: 'صغ عنواناً واضحاً ومحدداً يعكس مشكلة الدراسة ويتضمن المتغيرات الرئيسية. يفضل ألا يتجاوز 15 كلمة.' },
         en: { label: 'Research Title', hint: 'Write a clear and specific title that reflects the research problem and includes the main variables. Ideally no more than 15 words.' },
-        type: 'text',
-        placeholder: { ar: 'مثال: أثر استخدام الذكاء الاصطناعي على مستوى التحصيل الأكاديمي لطلاب الجامعة...', en: 'e.g., The Impact of AI Tools on Academic Achievement Among University Students...' }
+        ph: { ar: 'مثال: أثر استخدام الذكاء الاصطناعي على التحصيل الأكاديمي...', en: 'e.g., The Impact of AI Tools on Academic Achievement...' }
       },
-      {
-        id: 'problem',
-        ar: { label: 'مشكلة الدراسة', hint: 'ابدأ بوصف الظاهرة أو المشكلة، ثم بيّن الفجوة المعرفية في الأدبيات، واختم بصياغة المشكلة كسؤال محوري.' },
+      { id: 'problem', type: 'textarea',
+        ar: { label: 'مشكلة الدراسة', hint: 'ابدأ بوصف الظاهرة أو المشكلة، ثم بين الفجوة المعرفية في الأدبيات، واختم بصياغة المشكلة كسؤال محوري.' },
         en: { label: 'Problem Statement', hint: 'Start by describing the phenomenon or issue, then identify the knowledge gap in existing literature, and conclude by framing the problem as a central question.' },
-        type: 'textarea',
-        placeholder: { ar: 'تُعدّ ظاهرة... من أبرز التحديات التي تواجه... وقد لاحظ الباحثون غياباً واضحاً في...', en: 'The phenomenon of... represents one of the most pressing challenges in... Researchers have noted a clear gap in...' }
+        ph: { ar: 'تعد ظاهرة... من أبرز التحديات التي تواجه... وقد لاحظ الباحثون غياباً في...', en: 'The phenomenon of... represents one of the most pressing challenges in...' }
       },
-      {
-        id: 'questions',
-        ar: { label: 'أسئلة الدراسة', hint: 'صغ كل سؤال بدءاً بـ "ما، كيف، هل، ما مدى". يجب أن تكون الأسئلة قابلة للقياس وترتبط مباشرة بالمشكلة.' },
-        en: { label: 'Research Questions', hint: 'Frame each question starting with "What, How, Does, To what extent". Questions must be measurable and directly linked to the problem.' },
-        type: 'questions',
-        placeholder: { ar: 'أدخل سؤالاً بحثياً...', en: 'Enter a research question...' }
+      { id: 'questions', type: 'questions',
+        ar: { label: 'أسئلة الدراسة', hint: 'صغ كل سؤال بدءاً بـ ما، كيف، هل. يجب أن تكون الأسئلة قابلة للقياس وترتبط مباشرة بالمشكلة.' },
+        en: { label: 'Research Questions', hint: 'Frame each question starting with What, How, Does, To what extent. Questions must be measurable and directly linked to the problem.' },
+        ph: { ar: 'أدخل سؤالاً بحثياً...', en: 'Enter a research question...' }
       },
-      {
-        id: 'objectives',
-        ar: { label: 'أهداف الدراسة', hint: 'استخدم أفعال إجرائية قابلة للقياس: يحدد، يقيس، يقارن، يحلل، يختبر. اربط كل هدف بسؤال بحثي.' },
-        en: { label: 'Study Objectives', hint: 'Use measurable action verbs: identify, measure, compare, analyze, test. Link each objective to a research question.' },
-        type: 'textarea',
-        placeholder: { ar: '1. التعرف على...\n2. قياس مستوى...\n3. المقارنة بين...', en: '1. To identify...\n2. To measure the level of...\n3. To compare between...' }
+      { id: 'objectives', type: 'textarea',
+        ar: { label: 'أهداف الدراسة', hint: 'استخدم أفعال إجرائية قابلة للقياس: يحدد، يقيس، يقارن، يحلل، يختبر.' },
+        en: { label: 'Study Objectives', hint: 'Use measurable action verbs: identify, measure, compare, analyze, test.' },
+        ph: { ar: '1. التعرف على...\n2. قياس مستوى...\n3. المقارنة بين...', en: '1. To identify...\n2. To measure...\n3. To compare...' }
       },
-      {
-        id: 'methodology',
+      { id: 'methodology', type: 'select',
         ar: { label: 'منهجية الدراسة', hint: 'حدد المنهج والأدوات والعينة. برر اختيار المنهج بناءً على طبيعة مشكلة الدراسة.' },
-        en: { label: 'Methodology', hint: 'Specify the approach, instruments, and sample. Justify the choice of methodology based on the nature of the research problem.' },
-        type: 'select',
+        en: { label: 'Methodology', hint: 'Specify the approach, instruments, and sample. Justify your choice based on the research problem.' },
         options: {
-          ar: ['المنهج الكمي - Quantitative', 'المنهج النوعي - Qualitative', 'المنهج المختلط - Mixed Methods', 'المنهج التجريبي - Experimental', 'المنهج الوصفي - Descriptive'],
+          ar: ['المنهج الكمي', 'المنهج النوعي', 'المنهج المختلط', 'المنهج التجريبي', 'المنهج الوصفي'],
           en: ['Quantitative Approach', 'Qualitative Approach', 'Mixed Methods', 'Experimental Design', 'Descriptive Survey']
         }
       },
-      {
-        id: 'references',
-        ar: { label: 'المراجع والمصادر', hint: 'أدخل مراجعك بتنسيق المعيار المختار (APA/MLA/IEEE). تأكد من ذكر المؤلف، السنة، العنوان، الجهة الناشرة.' },
-        en: { label: 'References', hint: 'Enter your references in the selected citation style (APA/MLA/IEEE). Ensure author, year, title, and publisher are included.' },
-        type: 'textarea',
-        placeholder: { ar: 'الحربي، خالد. (2022). توظيف الذكاء الاصطناعي في التعليم العالي. مجلة التربية، 45(2)، 112-135.\nSmith, J. (2021). AI in Education...', en: 'Smith, J. (2021). AI in Education: A Systematic Review. Journal of Educational Technology, 45(2), 112–135.\nJones, M., & Lee, K. (2020)...' }
+      { id: 'references', type: 'textarea',
+        ar: { label: 'المراجع والمصادر', hint: 'أدخل مراجعك بتنسيق المعيار المختار. تأكد من ذكر المؤلف، السنة، العنوان، الجهة الناشرة.' },
+        en: { label: 'References', hint: 'Enter your references in the selected citation style. Ensure author, year, title, and publisher are included.' },
+        ph: { ar: 'الحربي، خالد. (2022). عنوان الكتاب. دار النشر.', en: 'Smith, J. (2021). Title of Work. Publisher.' }
       }
     ]
   },
@@ -859,60 +285,127 @@ const TEMPLATES = {
     ar: { title: 'مراجعة الأدبيات', titleEn: 'LITERATURE REVIEW TEMPLATE' },
     en: { title: 'Literature Review', titleEn: 'LITERATURE REVIEW TEMPLATE' },
     fields: [
-      { id: 'title', ar: { label: 'عنوان المراجعة', hint: 'حدد الموضوع والنطاق الزمني للمراجعة. مثال: مراجعة منهجية لدراسات... خلال الفترة 2010-2023' }, en: { label: 'Review Title', hint: 'Define the topic and time scope of the review. Example: A Systematic Review of... During 2010–2023.' }, type: 'text', placeholder: { ar: 'مراجعة منهجية لدراسات...', en: 'A Systematic Review of...' } },
-      { id: 'scope', ar: { label: 'نطاق المراجعة وهدفها', hint: 'وضح الهدف من المراجعة، والفئة المستهدفة، والنطاق الجغرافي والزمني.' }, en: { label: 'Scope & Purpose', hint: 'Clarify the purpose of the review, target population, and geographical and temporal scope.' }, type: 'textarea', placeholder: { ar: 'تهدف هذه المراجعة إلى تجميع وتحليل الدراسات التي تناولت...', en: 'This review aims to synthesize and analyze studies that examined...' } },
-      { id: 'themes', ar: { label: 'المحاور والموضوعات الرئيسية', hint: 'صنّف الأدبيات ضمن محاور موضوعية. اذكر الاتفاقات والاختلافات بين الباحثين.' }, en: { label: 'Main Themes & Findings', hint: 'Categorize literature into thematic groups. Note agreements and disagreements among researchers.' }, type: 'textarea', placeholder: { ar: 'المحور الأول: ...\nالمحور الثاني: ...\nالمحور الثالث: ...', en: 'Theme 1: ...\nTheme 2: ...\nTheme 3: ...' } },
-      { id: 'gaps', ar: { label: 'الفجوات البحثية', hint: 'هذا أهم جزء. حدد ما لم تدرسه الأبحاث السابقة، وأين تكمن الحاجة إلى مزيد من البحث.' }, en: { label: 'Research Gaps', hint: 'This is the most critical section. Identify what prior research has not addressed and where further investigation is needed.' }, type: 'textarea', placeholder: { ar: 'رغم تعدد الدراسات في هذا المجال، إلا أنها أغفلت...', en: 'Despite extensive research in this field, existing studies have neglected...' } },
-      { id: 'references', ar: { label: 'قائمة المراجع', hint: 'رتب المراجع أبجدياً حسب نمط التوثيق المختار.' }, en: { label: 'References', hint: 'Arrange references alphabetically according to the selected citation style.' }, type: 'textarea', placeholder: { ar: 'أدخل المراجع هنا...', en: 'Enter references here...' } }
+      { id: 'rtitle', type: 'text',
+        ar: { label: 'عنوان المراجعة', hint: 'حدد الموضوع والنطاق الزمني للمراجعة.' },
+        en: { label: 'Review Title', hint: 'Define the topic and time scope of the review.' },
+        ph: { ar: 'مراجعة منهجية لدراسات...', en: 'A Systematic Review of...' }
+      },
+      { id: 'scope', type: 'textarea',
+        ar: { label: 'نطاق المراجعة وهدفها', hint: 'وضح الهدف من المراجعة، والفئة المستهدفة، والنطاق الجغرافي والزمني.' },
+        en: { label: 'Scope and Purpose', hint: 'Clarify the purpose of the review, target population, and geographical and temporal scope.' },
+        ph: { ar: 'تهدف هذه المراجعة إلى تجميع وتحليل الدراسات التي تناولت...', en: 'This review aims to synthesize and analyze studies that examined...' }
+      },
+      { id: 'themes', type: 'textarea',
+        ar: { label: 'المحاور والموضوعات الرئيسية', hint: 'صنف الأدبيات ضمن محاور موضوعية. اذكر الاتفاقات والاختلافات بين الباحثين.' },
+        en: { label: 'Main Themes and Findings', hint: 'Categorize literature into thematic groups. Note agreements and disagreements among researchers.' },
+        ph: { ar: 'المحور الأول: ...\nالمحور الثاني: ...', en: 'Theme 1: ...\nTheme 2: ...' }
+      },
+      { id: 'gaps', type: 'textarea',
+        ar: { label: 'الفجوات البحثية', hint: 'هذا أهم جزء. حدد ما لم تدرسه الأبحاث السابقة وأين تكمن الحاجة إلى مزيد من البحث.' },
+        en: { label: 'Research Gaps', hint: 'This is the most critical section. Identify what prior research has not addressed and where further investigation is needed.' },
+        ph: { ar: 'رغم تعدد الدراسات في هذا المجال، إلا أنها أغفلت...', en: 'Despite extensive research in this field, existing studies have neglected...' }
+      },
+      { id: 'references', type: 'textarea',
+        ar: { label: 'قائمة المراجع', hint: 'رتب المراجع أبجدياً حسب نمط التوثيق المختار.' },
+        en: { label: 'References', hint: 'Arrange references alphabetically according to the selected citation style.' },
+        ph: { ar: 'أدخل المراجع هنا...', en: 'Enter references here...' }
+      }
     ]
   },
   thesis: {
     ar: { title: 'الأطروحة الأكاديمية', titleEn: 'THESIS / DISSERTATION TEMPLATE' },
     en: { title: 'Thesis / Dissertation', titleEn: 'THESIS / DISSERTATION TEMPLATE' },
     fields: [
-      { id: 'title', ar: { label: 'عنوان الأطروحة', hint: 'يجب أن يكون العنوان شاملاً ودقيقاً ويعكس محتوى الأطروحة بالكامل.' }, en: { label: 'Thesis Title', hint: 'The title must be comprehensive and precise, fully reflecting the content of the thesis.' }, type: 'text', placeholder: { ar: 'عنوان الأطروحة...', en: 'Thesis title...' } },
-      { id: 'abstract', ar: { label: 'الملخص (Abstract)', hint: 'اكتب ملخصاً من 200-350 كلمة يشمل: المشكلة، المنهجية، النتائج، التوصيات. لا تستخدم مراجع في الملخص.' }, en: { label: 'Abstract', hint: 'Write a 200–350 word abstract covering: the problem, methodology, findings, and recommendations. Do not include references in the abstract.' }, type: 'textarea', placeholder: { ar: 'تتناول هذه الدراسة مشكلة... باستخدام منهج... وقد توصلت الدراسة إلى...', en: 'This study examines the problem of... using a... methodology. The study found that...' } },
-      { id: 'intro', ar: { label: 'الفصل الأول: المقدمة', hint: 'ابدأ بعام ثم ضيّق نحو الخاص. تضمّن: السياق، الأهمية، المشكلة، الأهداف، محددات الدراسة.' }, en: { label: 'Chapter 1: Introduction', hint: 'Begin broadly then narrow to the specific. Include: context, significance, problem, objectives, and scope of study.' }, type: 'textarea', placeholder: { ar: 'يشهد العالم تحولات متسارعة في مجال...', en: 'The world is witnessing rapid transformations in the field of...' } },
-      { id: 'methodology', ar: { label: 'منهجية البحث', hint: 'اشرح بالتفصيل: المنهج، مجتمع وعينة الدراسة، أدوات القياس، إجراءات جمع البيانات، والأساليب الإحصائية.' }, en: { label: 'Research Methodology', hint: 'Describe in detail: the approach, population and sample, measurement instruments, data collection procedures, and statistical methods.' }, type: 'textarea', placeholder: { ar: 'اعتمدت الدراسة على المنهج...', en: 'This study adopted a... approach...' } },
-      { id: 'findings', ar: { label: 'النتائج والتحليل', hint: 'اعرض النتائج بترتيب منطقي يتوافق مع أسئلة الدراسة. استخدم الجداول والأشكال حيث ينبغي.' }, en: { label: 'Findings & Analysis', hint: 'Present findings in a logical order aligned with the research questions. Use tables and figures where appropriate.' }, type: 'textarea', placeholder: { ar: 'أظهرت نتائج الدراسة أن...', en: 'The findings of the study revealed that...' } },
-      { id: 'references', ar: { label: 'المراجع', hint: 'أدخل جميع المراجع المستخدمة.' }, en: { label: 'References', hint: 'Enter all references used in the thesis.' }, type: 'textarea', placeholder: { ar: 'المراجع العربية والأجنبية...', en: 'Arabic and international references...' } }
+      { id: 'rtitle', type: 'text',
+        ar: { label: 'عنوان الأطروحة', hint: 'يجب أن يكون العنوان شاملاً ودقيقاً ويعكس محتوى الأطروحة بالكامل.' },
+        en: { label: 'Thesis Title', hint: 'The title must be comprehensive and precise, fully reflecting the content of the thesis.' },
+        ph: { ar: 'عنوان الأطروحة...', en: 'Thesis title...' }
+      },
+      { id: 'abstract', type: 'textarea',
+        ar: { label: 'الملخص', hint: 'اكتب ملخصاً من 200-350 كلمة يشمل: المشكلة، المنهجية، النتائج، التوصيات. لا تستخدم مراجع في الملخص.' },
+        en: { label: 'Abstract', hint: 'Write a 200-350 word abstract covering: problem, methodology, findings, and recommendations. Do not include references.' },
+        ph: { ar: 'تتناول هذه الدراسة مشكلة... باستخدام منهج... وقد توصلت إلى...', en: 'This study examines the problem of... using a... methodology. The study found that...' }
+      },
+      { id: 'intro', type: 'textarea',
+        ar: { label: 'الفصل الأول: المقدمة', hint: 'ابدأ بعام ثم ضيق نحو الخاص. تضمن: السياق، الأهمية، المشكلة، الأهداف، محددات الدراسة.' },
+        en: { label: 'Chapter 1: Introduction', hint: 'Begin broadly then narrow to the specific. Include: context, significance, problem, objectives, and scope of study.' },
+        ph: { ar: 'يشهد العالم تحولات متسارعة في مجال...', en: 'The world is witnessing rapid transformations in the field of...' }
+      },
+      { id: 'methodology', type: 'textarea',
+        ar: { label: 'منهجية البحث', hint: 'اشرح بالتفصيل: المنهج، مجتمع وعينة الدراسة، أدوات القياس، إجراءات جمع البيانات، والأساليب الإحصائية.' },
+        en: { label: 'Research Methodology', hint: 'Describe in detail: the approach, population and sample, measurement instruments, data collection procedures, and statistical methods.' },
+        ph: { ar: 'اعتمدت الدراسة على المنهج...', en: 'This study adopted a... approach...' }
+      },
+      { id: 'findings', type: 'textarea',
+        ar: { label: 'النتائج والتحليل', hint: 'اعرض النتائج بترتيب منطقي يتوافق مع أسئلة الدراسة.' },
+        en: { label: 'Findings and Analysis', hint: 'Present findings in a logical order aligned with the research questions.' },
+        ph: { ar: 'أظهرت نتائج الدراسة أن...', en: 'The findings of the study revealed that...' }
+      },
+      { id: 'references', type: 'textarea',
+        ar: { label: 'المراجع', hint: 'أدخل جميع المراجع المستخدمة.' },
+        en: { label: 'References', hint: 'Enter all references used in the thesis.' },
+        ph: { ar: 'المراجع العربية والأجنبية...', en: 'References...' }
+      }
     ]
   },
   paper: {
     ar: { title: 'الورقة البحثية', titleEn: 'RESEARCH PAPER TEMPLATE' },
     en: { title: 'Research Paper', titleEn: 'RESEARCH PAPER TEMPLATE' },
     fields: [
-      { id: 'title', ar: { label: 'عنوان الورقة', hint: 'عنوان قصير وجذاب لا يتجاوز 12 كلمة. يجب أن يحمل الكلمات المفتاحية للنشر في المجلات العلمية.' }, en: { label: 'Paper Title', hint: 'A concise and compelling title not exceeding 12 words. Must contain keywords for journal indexing.' }, type: 'text', placeholder: { ar: 'عنوان الورقة البحثية...', en: 'Paper title...' } },
-      { id: 'abstract', ar: { label: 'الملخص', hint: 'ملخص منظم (structured abstract) يتضمن: الهدف، المنهج، النتائج، الاستنتاج. 150-250 كلمة.' }, en: { label: 'Abstract', hint: 'Structured abstract including: Purpose, Methodology, Findings, Conclusion. 150–250 words.' }, type: 'textarea', placeholder: { ar: 'الهدف: ...\nالمنهج: ...\nالنتائج: ...\nالاستنتاج: ...', en: 'Purpose: ...\nMethodology: ...\nFindings: ...\nConclusion: ...' } },
-      { id: 'keywords', ar: { label: 'الكلمات المفتاحية', hint: 'اختر 5-7 كلمات مفتاحية تعكس الموضوع الرئيسي. تفصل بينها بفاصلة.' }, en: { label: 'Keywords', hint: 'Choose 5–7 keywords reflecting the main topic, separated by commas.' }, type: 'text', placeholder: { ar: 'الكلمة الأولى، الثانية، الثالثة...', en: 'keyword one, keyword two, keyword three...' } },
-      { id: 'intro', ar: { label: 'المقدمة', hint: 'ضع سياق الدراسة، مراجعة موجزة للأدبيات، الفجوة البحثية، ثم هدف الورقة.' }, en: { label: 'Introduction', hint: 'Provide study context, brief literature overview, research gap, then the paper's aim.' }, type: 'textarea', placeholder: { ar: 'تُعدّ قضية... من القضايا المحورية في مجال...', en: 'The issue of... represents a central concern in the field of...' } },
-      { id: 'methodology', ar: { label: 'المنهجية', hint: 'اشرح التصميم البحثي، العينة، أدوات القياس، وإجراءات التحليل.' }, en: { label: 'Methodology', hint: 'Explain the research design, sample, measurement tools, and analysis procedures.' }, type: 'textarea', placeholder: { ar: 'تبنّت الدراسة الحالية المنهج...', en: 'The current study adopted a...' } },
-      { id: 'results', ar: { label: 'النتائج والمناقشة', hint: 'ناقش النتائج في ضوء الأدبيات السابقة. أشر إلى أوجه الاتفاق والاختلاف مع الدراسات السابقة.' }, en: { label: 'Results & Discussion', hint: 'Discuss findings in light of prior literature. Highlight agreements and disagreements with existing studies.' }, type: 'textarea', placeholder: { ar: 'أسفرت نتائج التحليل عن...', en: 'The analysis yielded...' } },
-      { id: 'conclusion', ar: { label: 'الخاتمة والتوصيات', hint: 'لخص أبرز النتائج، اذكر محدودية الدراسة، ثم قدم توصيات للباحثين المستقبليين.' }, en: { label: 'Conclusion & Recommendations', hint: 'Summarize key findings, acknowledge study limitations, and provide recommendations for future researchers.' }, type: 'textarea', placeholder: { ar: 'خلصت الدراسة إلى...', en: 'The study concluded that...' } },
-      { id: 'references', ar: { label: 'المراجع', hint: 'رتب المراجع وفق النمط المختار.' }, en: { label: 'References', hint: 'Arrange references according to the selected style.' }, type: 'textarea', placeholder: { ar: 'المراجع...', en: 'References...' } }
+      { id: 'rtitle', type: 'text',
+        ar: { label: 'عنوان الورقة', hint: 'عنوان قصير وجذاب لا يتجاوز 12 كلمة. يجب أن يحمل الكلمات المفتاحية للنشر في المجلات العلمية.' },
+        en: { label: 'Paper Title', hint: 'A concise title not exceeding 12 words. Must contain keywords for journal indexing.' },
+        ph: { ar: 'عنوان الورقة البحثية...', en: 'Paper title...' }
+      },
+      { id: 'abstract', type: 'textarea',
+        ar: { label: 'الملخص', hint: 'ملخص منظم يتضمن: الهدف، المنهج، النتائج، الاستنتاج. 150-250 كلمة.' },
+        en: { label: 'Abstract', hint: 'Structured abstract including: Purpose, Methodology, Findings, Conclusion. 150-250 words.' },
+        ph: { ar: 'الهدف: ...\nالمنهج: ...\nالنتائج: ...\nالاستنتاج: ...', en: 'Purpose: ...\nMethodology: ...\nFindings: ...\nConclusion: ...' }
+      },
+      { id: 'keywords', type: 'text',
+        ar: { label: 'الكلمات المفتاحية', hint: 'اختر 5-7 كلمات مفتاحية تعكس الموضوع الرئيسي مفصولة بفاصلة.' },
+        en: { label: 'Keywords', hint: 'Choose 5-7 keywords reflecting the main topic, separated by commas.' },
+        ph: { ar: 'الكلمة الأولى، الثانية، الثالثة...', en: 'keyword one, keyword two, keyword three...' }
+      },
+      { id: 'intro', type: 'textarea',
+        ar: { label: 'المقدمة', hint: 'ضع سياق الدراسة، مراجعة موجزة للأدبيات، الفجوة البحثية، ثم هدف الورقة.' },
+        en: { label: 'Introduction', hint: 'Provide study context, brief literature overview, research gap, then the aim.' },
+        ph: { ar: 'تعد قضية... من القضايا المحورية في مجال...', en: 'The issue of... represents a central concern in the field of...' }
+      },
+      { id: 'results', type: 'textarea',
+        ar: { label: 'النتائج والمناقشة', hint: 'ناقش النتائج في ضوء الأدبيات السابقة. أشر إلى أوجه الاتفاق والاختلاف مع الدراسات السابقة.' },
+        en: { label: 'Results and Discussion', hint: 'Discuss findings in light of prior literature. Highlight agreements and disagreements with existing studies.' },
+        ph: { ar: 'أسفرت نتائج التحليل عن...', en: 'The analysis yielded...' }
+      },
+      { id: 'conclusion', type: 'textarea',
+        ar: { label: 'الخاتمة والتوصيات', hint: 'لخص أبرز النتائج، اذكر محدودية الدراسة، ثم قدم توصيات للباحثين المستقبليين.' },
+        en: { label: 'Conclusion and Recommendations', hint: 'Summarize key findings, acknowledge limitations, and provide recommendations for future researchers.' },
+        ph: { ar: 'خلصت الدراسة إلى...', en: 'The study concluded that...' }
+      },
+      { id: 'references', type: 'textarea',
+        ar: { label: 'المراجع', hint: 'رتب المراجع وفق النمط المختار.' },
+        en: { label: 'References', hint: 'Arrange references according to the selected style.' },
+        ph: { ar: 'المراجع...', en: 'References...' }
+      }
     ]
   }
 };
 
-const TEMPLATE_META = {
-  proposal: { ar: { name: 'المقترح البحثي', desc: 'Research Proposal' }, en: { name: 'Research Proposal', desc: 'خطط الأبحاث والإشراف' } },
-  literature: { ar: { name: 'مراجعة الأدبيات', desc: 'Literature Review' }, en: { name: 'Literature Review', desc: 'نقد الدراسات السابقة' } },
-  thesis: { ar: { name: 'الأطروحة الأكاديمية', desc: 'Thesis / Dissertation' }, en: { name: 'Thesis / Dissertation', desc: 'الأعمال الأكاديمية الطويلة' } },
-  paper: { ar: { name: 'الورقة البحثية', desc: 'Research Paper' }, en: { name: 'Research Paper', desc: 'للنشر في المجلات' } }
+var TEMPLATE_META = {
+  proposal: { ar: { name: 'المقترح البحثي', desc: 'Research Proposal' }, en: { name: 'Research Proposal', desc: 'خطط الأبحاث' } },
+  literature: { ar: { name: 'مراجعة الأدبيات', desc: 'Literature Review' }, en: { name: 'Literature Review', desc: 'نقد الدراسات' } },
+  thesis:    { ar: { name: 'الأطروحة الأكاديمية', desc: 'Thesis / Dissertation' }, en: { name: 'Thesis / Dissertation', desc: 'أعمال أكاديمية' } },
+  paper:     { ar: { name: 'الورقة البحثية', desc: 'Research Paper' }, en: { name: 'Research Paper', desc: 'للنشر في المجلات' } }
 };
 
-// ─── LANGUAGE ─────────────────────────────────────────────────────────────────
 function setLang(l) {
   lang = l;
   document.documentElement.lang = l;
   document.body.classList.toggle('en', l === 'en');
   document.body.dir = l === 'ar' ? 'rtl' : 'ltr';
-
   document.getElementById('btnAr').classList.toggle('active', l === 'ar');
   document.getElementById('btnEn').classList.toggle('active', l === 'en');
-
-  // Update static text
-  const t = T[l];
+  var t = T[l];
   document.getElementById('sideLabel').textContent = t.sideLabel;
   document.getElementById('welcomeTitle').textContent = t.welcomeTitle;
   document.getElementById('welcomeSub').textContent = t.welcomeSub;
@@ -923,252 +416,228 @@ function setLang(l) {
   document.getElementById('exportBtn').textContent = t.exportBtn;
   document.getElementById('exportPdfBtn').textContent = t.exportPdfBtn;
   document.getElementById('previewEmpty').textContent = t.previewEmpty;
-
-  // Update sidebar buttons
-  Object.keys(TEMPLATE_META).forEach(k => {
-    const m = TEMPLATE_META[k][l];
-    document.querySelector(`#tpl-${k} .t-name`).textContent = m.name;
-    document.querySelector(`#tpl-${k} .t-desc`).textContent = m.desc;
+  Object.keys(TEMPLATE_META).forEach(function(k) {
+    var m = TEMPLATE_META[k][l];
+    document.querySelector('#tpl-' + k + ' .t-name').textContent = m.name;
+    document.querySelector('#tpl-' + k + ' .t-desc').textContent = m.desc;
   });
-
   if (currentTemplate) selectTemplate(currentTemplate);
 }
 
-// ─── TEMPLATE SELECTION ───────────────────────────────────────────────────────
 function selectTemplate(id) {
   currentTemplate = id;
-  formData[id] = formData[id] || {};
-  questionCounts[id] = questionCounts[id] || {};
-
-  // Update active button
-  document.querySelectorAll('.template-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(`tpl-${id}`).classList.add('active');
-
-  // Show form
+  if (!formData[id]) formData[id] = {};
+  document.querySelectorAll('.template-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById('tpl-' + id).classList.add('active');
   document.getElementById('welcomeScreen').style.display = 'none';
   document.getElementById('formArea').style.display = 'block';
-
-  const tpl = TEMPLATES[id];
-  const info = tpl[lang] || tpl['ar'];
-
+  var tpl = TEMPLATES[id];
+  var info = tpl[lang] || tpl['ar'];
   document.getElementById('formTitleEn').textContent = tpl.ar.titleEn;
   document.getElementById('formTitle').textContent = info.title;
   document.getElementById('formSubtitle').textContent = T[lang].formSubtitle;
-
   renderFields(id, tpl.fields);
   updatePreview(id);
   updateProgress(id);
 }
 
-// ─── RENDER FIELDS ────────────────────────────────────────────────────────────
 function renderFields(templateId, fields) {
-  const container = document.getElementById('fieldsContainer');
+  var container = document.getElementById('fieldsContainer');
   container.innerHTML = '';
-
-  fields.forEach(f => {
-    const saved = formData[templateId][f.id] || '';
-    const info = f[lang] || f['ar'];
-    const ph = f.placeholder[lang] || f.placeholder['ar'];
-
-    const section = document.createElement('div');
+  fields.forEach(function(f) {
+    var saved = formData[templateId][f.id] || '';
+    var info = f[lang] || f['ar'];
+    var ph = (f.ph && (f.ph[lang] || f.ph['ar'])) || '';
+    var otherLang = lang === 'ar' ? 'en' : 'ar';
+    var otherInfo = f[otherLang] || {};
+    var section = document.createElement('div');
     section.className = 'field-section';
-
-    const enLabel = f[lang === 'ar' ? 'en' : 'ar']?.label || '';
-
-    section.innerHTML = `
-      <div class="field-header">
-        <div class="field-label-wrap">
-          <span class="field-label">${info.label}</span>
-          <span class="field-label-en">${enLabel}</span>
-        </div>
-        <button class="field-hint-btn" onclick="toggleHint('hint-${templateId}-${f.id}')" title="${T[lang].hint}">?</button>
-      </div>
-      <div class="field-body">
-        <div class="field-hint-box" id="hint-${templateId}-${f.id}">${info.hint}</div>
-        ${renderInput(f, templateId, saved, ph)}
-      </div>
-    `;
+    var hintId = 'hint-' + templateId + '-' + f.id;
+    var headerHTML = '<div class="field-header">'
+      + '<div class="field-label-wrap">'
+      + '<span class="field-label">' + escHtml(info.label) + '</span>'
+      + '<span class="field-label-en">' + escHtml(otherInfo.label || '') + '</span>'
+      + '</div>'
+      + '<button class="field-hint-btn" id="hbtn-' + hintId + '">?</button>'
+      + '</div>';
+    var bodyHTML = '<div class="field-body">'
+      + '<div class="field-hint-box" id="' + hintId + '">' + escHtml(info.hint || '') + '</div>'
+      + renderInput(f, templateId, saved, ph)
+      + '</div>';
+    section.innerHTML = headerHTML + bodyHTML;
     container.appendChild(section);
-
-    // Re-init questions
-    if (f.type === 'questions') {
-      const savedQs = formData[templateId][f.id + '_list'] || [''];
-      questionCounts[templateId] = questionCounts[templateId] || {};
-      questionCounts[templateId][f.id] = savedQs.length;
+    // Attach hint button event
+    document.getElementById('hbtn-' + hintId).addEventListener('click', function() {
+      toggleHint(hintId);
+    });
+    // Attach events to inputs
+    if (f.type === 'text' || f.type === 'textarea') {
+      var el = document.getElementById('field-' + templateId + '-' + f.id);
+      if (el) {
+        el.addEventListener('input', function() {
+          formData[templateId][f.id] = el.value;
+          updatePreview(templateId);
+          updateProgress(templateId);
+        });
+      }
+    } else if (f.type === 'select') {
+      var sel = document.getElementById('field-' + templateId + '-' + f.id);
+      if (sel) {
+        sel.addEventListener('change', function() {
+          formData[templateId][f.id] = sel.value;
+          updatePreview(templateId);
+          updateProgress(templateId);
+        });
+      }
+    } else if (f.type === 'questions') {
+      var savedQs = formData[templateId][f.id + '_list'] || [''];
       renderQuestions(templateId, f.id, savedQs, ph);
+      var addBtn = document.getElementById('addq-' + templateId + '-' + f.id);
+      if (addBtn) {
+        addBtn.addEventListener('click', function() {
+          var list = formData[templateId][f.id + '_list'] || [''];
+          list.push('');
+          renderQuestions(templateId, f.id, list, ph);
+        });
+      }
     }
   });
 }
 
 function renderInput(f, templateId, saved, ph) {
-  const options = f.options ? (f.options[lang] || f.options['ar']) : [];
-
   if (f.type === 'text') {
-    return `<input type="text" id="field-${templateId}-${f.id}" placeholder="${ph}" value="${escHtml(saved)}"
-      oninput="saveField('${templateId}','${f.id}',this.value)">`;
+    return '<input type="text" id="field-' + templateId + '-' + f.id + '" placeholder="' + escAttr(ph) + '" value="' + escAttr(saved) + '">';
   }
   if (f.type === 'textarea') {
-    return `<textarea id="field-${templateId}-${f.id}" rows="5" placeholder="${ph}"
-      oninput="saveField('${templateId}','${f.id}',this.value)">${escHtml(saved)}</textarea>`;
+    return '<textarea id="field-' + templateId + '-' + f.id + '" rows="5" placeholder="' + escAttr(ph) + '">' + escHtml(saved) + '</textarea>';
   }
   if (f.type === 'select') {
-    const opts = options.map((o, i) => `<option value="${o}" ${saved === o ? 'selected' : ''}>${o}</option>`).join('');
-    return `<select class="field-select" id="field-${templateId}-${f.id}"
-      onchange="saveField('${templateId}','${f.id}',this.value)">${opts}</select>`;
+    var options = (f.options && (f.options[lang] || f.options['ar'])) || [];
+    var opts = options.map(function(o) {
+      return '<option value="' + escAttr(o) + '"' + (saved === o ? ' selected' : '') + '>' + escHtml(o) + '</option>';
+    }).join('');
+    return '<select class="field-select" id="field-' + templateId + '-' + f.id + '">' + opts + '</select>';
   }
   if (f.type === 'questions') {
-    return `<div class="questions-list" id="qlist-${templateId}-${f.id}"></div>
-      <button class="add-q-btn" onclick="addQuestion('${templateId}','${f.id}','${ph}')">${T[lang].addQ}</button>`;
+    return '<div class="questions-list" id="qlist-' + templateId + '-' + f.id + '"></div>'
+      + '<button class="add-q-btn" id="addq-' + templateId + '-' + f.id + '">' + T[lang].addQ + '</button>';
   }
   return '';
 }
 
 function renderQuestions(templateId, fieldId, savedQs, ph) {
-  const container = document.getElementById(`qlist-${templateId}-${fieldId}`);
+  var container = document.getElementById('qlist-' + templateId + '-' + fieldId);
   if (!container) return;
   container.innerHTML = '';
-  savedQs.forEach((q, i) => {
-    const item = document.createElement('div');
+  formData[templateId][fieldId + '_list'] = savedQs;
+  savedQs.forEach(function(q, i) {
+    var item = document.createElement('div');
     item.className = 'question-item';
-    item.innerHTML = `
-      <div class="question-num">${i + 1}</div>
-      <input type="text" placeholder="${ph}" value="${escHtml(q)}"
-        oninput="saveQuestion('${templateId}','${fieldId}',${i},this.value)">
-    `;
+    var numDiv = document.createElement('div');
+    numDiv.className = 'question-num';
+    numDiv.textContent = i + 1;
+    var inp = document.createElement('input');
+    inp.type = 'text';
+    inp.placeholder = ph;
+    inp.value = q;
+    (function(idx) {
+      inp.addEventListener('input', function() {
+        formData[templateId][fieldId + '_list'][idx] = inp.value;
+        updatePreview(templateId);
+        updateProgress(templateId);
+      });
+    })(i);
+    item.appendChild(numDiv);
+    item.appendChild(inp);
     container.appendChild(item);
   });
-  formData[templateId][fieldId + '_list'] = savedQs;
 }
 
-function addQuestion(templateId, fieldId, ph) {
-  const list = formData[templateId][fieldId + '_list'] || [''];
-  list.push('');
-  renderQuestions(templateId, fieldId, list, ph);
-}
-
-function saveQuestion(templateId, fieldId, idx, val) {
-  formData[templateId][fieldId + '_list'] = formData[templateId][fieldId + '_list'] || [];
-  formData[templateId][fieldId + '_list'][idx] = val;
-  updatePreview(templateId);
-  updateProgress(templateId);
-  flashSave();
-}
-
-// ─── FIELD SAVE ───────────────────────────────────────────────────────────────
-function saveField(templateId, fieldId, val) {
-  formData[templateId][fieldId] = val;
-  updatePreview(templateId);
-  updateProgress(templateId);
-  flashSave();
-}
-
-let saveTimer;
-function flashSave() {
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(() => {}, 1000);
-}
-
-// ─── HINT ─────────────────────────────────────────────────────────────────────
 function toggleHint(id) {
-  const el = document.getElementById(id);
+  var el = document.getElementById(id);
   if (el) el.classList.toggle('visible');
 }
 
-// ─── PROGRESS ─────────────────────────────────────────────────────────────────
 function updateProgress(templateId) {
-  const tpl = TEMPLATES[templateId];
-  const total = tpl.fields.length;
-  let filled = 0;
-  tpl.fields.forEach(f => {
-    const val = f.type === 'questions'
-      ? (formData[templateId][f.id + '_list'] || []).filter(q => q.trim()).length
-      : (formData[templateId][f.id] || '').trim().length;
+  var tpl = TEMPLATES[templateId];
+  var total = tpl.fields.length;
+  var filled = 0;
+  tpl.fields.forEach(function(f) {
+    var val;
+    if (f.type === 'questions') {
+      val = (formData[templateId][f.id + '_list'] || []).filter(function(q) { return q && q.trim(); }).length;
+    } else {
+      val = (formData[templateId][f.id] || '').trim().length;
+    }
     if (val > 0) filled++;
   });
-  const pct = Math.round((filled / total) * 100);
+  var pct = Math.round((filled / total) * 100);
   document.getElementById('progressFill').style.width = pct + '%';
   document.getElementById('progressPct').textContent = pct + '%';
 }
 
-// ─── LIVE PREVIEW ─────────────────────────────────────────────────────────────
 function updatePreview(templateId) {
-  const tpl = TEMPLATES[templateId];
-  const style = document.getElementById('styleSelect').value;
+  var tpl = TEMPLATES[templateId];
+  var style = document.getElementById('styleSelect').value;
   document.getElementById('styleTag').textContent = style;
-  document.getElementById('previewEmpty').style.display = 'none';
-
-  const title = (tpl[lang] || tpl['ar']).title;
-  const data = formData[templateId] || {};
-
-  let html = `
-    <div class="doc-uni-header">
-      <div class="doc-uni-name">${lang === 'ar' ? 'جامعة الباحث العلمية' : 'Academic Research University'}</div>
-      <div class="doc-doc-type">${title}</div>
-      <div class="doc-style-tag">${style} Format | ${new Date().getFullYear()}</div>
-    </div>
-  `;
-
-  tpl.fields.forEach(f => {
-    const info = f[lang] || f['ar'];
-    let val = '';
-
+  var el = document.getElementById('previewEmpty');
+  if (el) el.style.display = 'none';
+  var info = tpl[lang] || tpl['ar'];
+  var data = formData[templateId] || {};
+  var uniName = lang === 'ar' ? 'جامعة الباحث العلمية' : 'Academic Research University';
+  var html = '<div class="doc-uni-header">'
+    + '<div class="doc-uni-name">' + escHtml(uniName) + '</div>'
+    + '<div class="doc-doc-type">' + escHtml(info.title) + '</div>'
+    + '<div class="doc-style-tag">' + style + ' Format | ' + new Date().getFullYear() + '</div>'
+    + '</div>';
+  tpl.fields.forEach(function(f) {
+    var finfo = f[lang] || f['ar'];
+    var val = '';
     if (f.type === 'questions') {
-      const list = data[f.id + '_list'] || [];
-      val = list.filter(q => q.trim()).map((q, i) => `${i + 1}. ${q}`).join('\n');
+      var list = data[f.id + '_list'] || [];
+      val = list.filter(function(q) { return q && q.trim(); }).map(function(q, i) { return (i + 1) + '. ' + q; }).join('\n');
     } else {
       val = data[f.id] || '';
     }
-
-    const display = val.trim()
-      ? `<div class="doc-section-body">${escHtml(val)}</div>`
-      : `<div class="doc-placeholder">${lang === 'ar' ? '[ لم يُدخَل بعد ]' : '[ Not yet entered ]'}</div>`;
-
-    html += `
-      <div class="doc-section">
-        <div class="doc-section-title">${info.label}</div>
-        ${display}
-      </div>
-    `;
+    var bodyHTML = val.trim()
+      ? '<div class="doc-section-body">' + escHtml(val) + '</div>'
+      : '<div class="doc-placeholder">' + T[lang].notEntered + '</div>';
+    html += '<div class="doc-section">'
+      + '<div class="doc-section-title">' + escHtml(finfo.label) + '</div>'
+      + bodyHTML
+      + '</div>';
   });
-
   document.getElementById('previewDoc').innerHTML = html;
 }
 
-// ─── EXPORT ───────────────────────────────────────────────────────────────────
-function exportDoc() {
-  showToast(T[lang].toastWord);
+function onStyleChange() {
+  var style = document.getElementById('styleSelect').value;
+  document.getElementById('styleTag').textContent = style;
+  if (currentTemplate) updatePreview(currentTemplate);
 }
 
-function exportPDF() {
-  showToast(T[lang].toastPdf);
-}
+function exportDoc() { showToast(T[lang].toastWord); }
+function exportPDF() { showToast(T[lang].toastPdf); }
 
 function showToast(msg) {
-  const t = document.getElementById('toast');
+  var t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
+  setTimeout(function() { t.classList.remove('show'); }, 3000);
 }
 
-// ─── STYLE CHANGE ─────────────────────────────────────────────────────────────
-document.getElementById('styleSelect').addEventListener('change', function () {
-  document.getElementById('styleTag').textContent = this.value;
-  if (currentTemplate) updatePreview(currentTemplate);
-});
-
-// ─── UTILS ────────────────────────────────────────────────────────────────────
 function escHtml(s) {
   if (!s) return '';
-  return String(s)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
-// ─── INIT ─────────────────────────────────────────────────────────────────────
-// Auto-select proposal on load for demo
-setTimeout(() => selectTemplate('proposal'), 300);
+function escAttr(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// Init
+setTimeout(function() { selectTemplate('proposal'); }, 100);
 </script>
 </body>
 </html>
